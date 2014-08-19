@@ -1,0 +1,23 @@
+{
+  "name": "nodebr-streams-and-tests",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cirocosta/nodebr-streams-and-tests.git"
+  },
+  "author": "Ciro S. Costa <ciro9758@gmail.com> (http://www.cirocosta.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cirocosta/nodebr-streams-and-tests/issues"
+  },
+  "homepage": "https://github.com/cirocosta/nodebr-streams-and-tests",
+  "dependencies": {
+    "casperjs": "^1.1.0-beta3",
+    "phantomjs": "^1.9.7-15"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "nodebr-streams-and-tests",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cirocosta/nodebr-streams-and-tests",
+  "authors": [
+    "Ciro S. Costa <ciro.costa@usp.br>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
