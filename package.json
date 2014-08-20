@@ -18,6 +18,11 @@
   "homepage": "https://github.com/cirocosta/nodebr-streams-and-tests",
   "dependencies": {
     "casperjs": "^1.1.0-beta3",
+    "karma": "^0.12.22",
+    "karma-chrome-launcher": "^0.1.4",
     "phantomjs": "^1.9.7-15"
+  },
+  "devDependencies": {
+    "karma-jasmine": "^0.1.5"
   }
 }
