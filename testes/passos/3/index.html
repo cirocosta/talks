@@ -1,16 +1,17 @@
 <html>
 <head>
 	<title>Teste</title>
-	<link rel="stylesheet" href="mocha.css">
+	<link rel="stylesheet" href="../../node_modules/mocha/mocha.css">
 </head>
 <body>
 
 	<div id="mocha"></div>
 
 	<script src="calculadora.js"></script>
-	<script src="chai.js"></script>
-	<script src="mocha.js"></script>
+	<script src="../../node_modules/chai/chai.js"></script>
+	<script src="../../node_modules/mocha/mocha.js"></script>
 	<script>mocha.setup('bdd');</script>
+	<script src="test-calculadora.js"></script>
 	<script>
 		mocha.checkLeaks();
 		mocha.globals(['Calculadora']);

@@ -94,9 +94,15 @@ Para a segunda podemos utilizar uma biblioteca feita para isso: SinonJS. O Sinon
 
 //TODO comentar algo sobre browserify ?
 
-Vêmos, primeiro manualmente, o resultado dos testes.
+Falar que existe um pattern (UMD) para tornar as coisas mais 'universal', porém não entrar em detalhes.
 
-Em seguida levantamos o Karma para ver para nós, automaticamente.
+Vêmos, primeiro manualmente, o resultado dos testes. Isto poderia ser feito mas como estamos falando de Node, feedback rápido e automação, isto não é bem o que buscamos.
+
+Falar algo sobre o Karma, mostrar seu arquivo de configuração e falar um pouco sobre o que pode ser feito com o mesmo (quanto à configuração mesmo... e lembrar que pode-se escrever plugins para o mesmo).
+
+*ps.: também pode-se levantar um IE para testes com o karma. Há um launcher para isso :)))*
+
+Levanto então o Karma para rodar no Firefox e no Chrome.
 
 
 ### Step 4 - Interface para calculadora  --- testes $.Ajax
