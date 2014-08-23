@@ -60,5 +60,5 @@ exports.config = {
    * que a resolucao de paths relativos seja
    * feita a partir deste ponto.
    */
-  baseUrl: 'http://localhost:8080/passos/5'
+  baseUrl: 'http://localhost:8080/passos/99'
 };
