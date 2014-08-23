@@ -51,7 +51,7 @@ Testar o backend também é extremamente importante. Sua API deve estar retornan
 
 Como geralmente talks sobre testes costumam ser cansativos e pouco divertidos, imaginei que seria divertido colocar alguma ação:
 
-### Step 0 - Vamos Criar uma Calculadora!
+### Passo 0 - Vamos Criar uma Calculadora!
 
 Tenho um disclaimer a fazer ... na verdade programar é um "hobby" que por sinal levo bem a sério, minha área de estudo formal é a Atuária - muito disconhecida, estudamos risco financeiro --> muita matemática --> só poderia criar uma calculadora.
 
@@ -71,12 +71,12 @@ Para os testes em Node irei ilustrar primeiramente o Mocha, um framework de test
 O Mocha, assim como outros frameworks de testes trabalha com encapsulamento por meio dos `Describes`, que expõe qual o escopo daquela suite - conjunto - de testes. O `it` então trata-se do teste em si, onde deve haver uma asserção (afirmação --- a palavra de fato existe). Vale lembrar que por se tratarem de funções quaisquer, qualquer código executável de javascript pode ser declarado alí.
 
 
-### Step 1 - Métodos na Calculadora
+### Passo 1 - Métodos na Calculadora
 
 Uma calculadora sem função alguma não serve para nada. Vamos então adicinar o método soma. Mais uma vez criei então um contexto, desta vez para o soma. Não se trata de algo necessário mais isso aumenta a organização dos testes, o que é algo importante à medida que se tem vários e identificar facilmente qual teste falhou trata-se de algo importante. Para o soma então poderíamos ter vários testes: se quando passamos somente um argumento ele levante uma exception, se passsando strings ele realmente parseia pra INT e aplica a soma, entre vários outros. Aqui testo apenas o mais intuitivo.
 
 
-### Step 2 - Método Assíncrono
+### Passo 2 - Método Assíncrono
 
 O Mocha possui uma interface bastante favorável a testes com funções assíncronas. Há basicamente dois modos de testar este tipo de função:
 
@@ -90,7 +90,7 @@ Para a segunda podemos utilizar uma biblioteca feita para isso: SinonJS. O Sinon
 //TODO continuar nisso
 
 
-### Step 3 - Joga os testes e a lib para o Browser
+### Passo 3 - Joga os testes e a lib para o Browser
 
 //TODO comentar algo sobre browserify ?
 
@@ -104,15 +104,17 @@ Falar algo sobre o Karma, mostrar seu arquivo de configuração e falar um pouco
 
 Levanto então o Karma para rodar no Firefox e no Chrome.
 
+Avisar: como ficar verificando manualmente não é nosso objetivo, deixamos de lado então essa página de testes manuais do Karma.
 
-### Step 4 - Interface para calculadora  --- testes $.Ajax
+
+### Passo 4 - Interface para calculadora  --- testes $.Ajax
 
 Temos uma interface e um servidor por trás. Usamos jQuery para falar com esse servidor. Ainda assim ... da para testar Métodos do jQuery? SIM.
 
 SinonJS to the rescue!
 
 
-### Step 5 - Testes de Interface
+### Passo 5 - Testes de Interface
 
 Temos os métodos de interação com a interface já todos testados, temos certeza de que estamos fazendo as chamadas corretamente. Dá para testar a INTERFACE EM SI?
 

@@ -10,20 +10,25 @@ var karmaConfs = glob.sync('passos/**/karma.conf.js');
 
 
 karmaConfs.forEach(function (name) {
-  gulp.task('test-karma-' + path.basename(name), function (done) {
-    karma.start({
-      configFile: path.resolve(__dirname, name),
-      singleRun: true
-    }, done);
+  var cfg = {
+    configFile: path.resolve(__dirname, name),
+    singleRun: true
+  };
+
+  if (process.argv[3] === '--headless')
+    cfg.browsers = ['PhantomJS'];
+
+  gulp.task('test-karma-' + path.relative(__dirname, name), function (done) {
+    karma.start(cfg, done);
   });
 });
 
 gulp.task('test-karma', karmaConfs.map(function (name) {
-  return 'test-karma-' + path.basename(name);
+  return 'test-karma-' + path.relative(__dirname, name);
 }));
 
 gulp.task('test-mocha', function () {
-  return gulp.src('./**/test-calculadora.js')
+  return gulp.src('./passos/**/test-calculadora.js')
     .pipe(mocha());
 });
 

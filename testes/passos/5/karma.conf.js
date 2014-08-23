@@ -16,7 +16,9 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         "../../node_modules/chai/chai.js",
+        "../../node_modules/jquery/dist/jquery.js",
         "calculadora.js",
+        "interface.js",
         "test-*.js"
     ],
 
