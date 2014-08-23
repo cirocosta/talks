@@ -120,7 +120,17 @@ Temos os métodos de interação com a interface já todos testados, temos certe
 
 SIM.
 
-Nightwatch, Protractor
+~~Nightwatch~~, Protractor
+
+Para o Protractor funcionar precisamos do WebDriverJS, que então controla o servidor Selenium (//TODO verificar melhor qual é a conexão das coisas). Para isso
+
+```sh
+$ # download do selenium, se necessario
+$ ./node_modules/protractor/webdriver-manager update
+
+$ # inicia o servidor
+$ ./node_modules/protractor/webdriver-manager start
+```
 
 
 ## Blá BLá

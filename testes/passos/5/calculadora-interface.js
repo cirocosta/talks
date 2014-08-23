@@ -1,6 +1,6 @@
 jQuery(function () {
   var $calc = jQuery('#calculadora');
-  var $tela = jQuery('.tela', $calc);
+  var $tela = jQuery('.tela input', $calc);
 
   jQuery('.tecla.igual', $calc).click(function (e) {
     getResult($tela.val().split('*'));
@@ -15,16 +15,16 @@ jQuery(function () {
 
     switch (tipo) {
       case 'NUM':
-        $tela.val(tecla);
+        $tela.val($tela.val() + tecla);
         break;
 
       case 'DEL':
         if (valorTela)
-          $tela.val(valorTela.substring(0, valorTela.length));
+          $tela.val(valorTela.substring(0, valorTela.length - 1));
         break;
 
       case '*':
-        console.log('mult');
+        $tela.val($tela.val() + tecla);
         break;
 
       case '=':
