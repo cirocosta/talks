@@ -132,6 +132,10 @@ $ # inicia o servidor
 $ ./node_modules/protractor/webdriver-manager start
 ```
 
+[Thought Works - Page Objects](http://www.thoughtworks.com/pt/insights/blog/using-page-objects-overcome-protractors-shortcomings)
+
+[M.F - Page Object](http://martinfowler.com/bliki/PageObject.html)
+
 
 ## Blá BLá
 

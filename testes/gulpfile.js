@@ -3,11 +3,11 @@
 var gulp = require('gulp');
 var glob = require('glob');
 var mocha = require('gulp-mocha');
+var protractor = require('gulp-protractor').protractor;
 var karma = require('karma').server;
 var path = require('path');
 
 var karmaConfs = glob.sync('passos/**/karma.conf.js');
-
 
 karmaConfs.forEach(function (name) {
   var cfg = {
@@ -21,6 +21,16 @@ karmaConfs.forEach(function (name) {
   gulp.task('test-karma-' + path.relative(__dirname, name), function (done) {
     karma.start(cfg, done);
   });
+});
+
+gulp.task('test-protractor', function () {
+  return gulp.src(['./passos/5/spec.js'])
+    .pipe(protractor({
+      configFile: './passos/5/protractor.conf.js'
+    }))
+    .on('error', function (e) {
+      throw e;
+    });
 });
 
 gulp.task('test-karma', karmaConfs.map(function (name) {
