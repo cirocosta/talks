@@ -4,7 +4,16 @@
 
 ### Introdução - Javascript Rules!
 
-Javascript é uma linguagem de alto nível, excelente para scripiting (assim como diz em seu próprio nome), o que também nos torna muito produtivos, podendo criar várias coisas rapidamente, especialmente no ínicio de um projeto. Sua natureza extremamente dinâmica, entretando, faz com que enfrentemos grandes problemas ao construir grandes projetos. Isto ocorre ainda mais na Web, onde Recorrentemente percebemos várias diferenças entre implementações por parte dos navegadores - ainda mais quando isto se relaciona ao DOM. Mesmo fora do contexto puramente web, javascript não tem 'tools' nativas que diminuiriam erros, tais como static typings, erros de compilação e acesso indevido.
+Esse talk é logo depois do almoço, então tentei deixar o mais intuitivo e com menos blá blá blá possível. Vou tentar primeiramente convencê-los (àqueles que talvez não curtam, ou realmente não connheçam ou talvez apenas pra gerar uma discussão fazendo então que todo mundo aprenda.
+
+
+A primeira vez que eu escrevi um Teste deve ter sido bastante parecida com a de muita gente: já tinha um projeto que estava ficando grande e díficil de manter, resolvia um bug e criava outros dois, o que cria uma situação de muita raiva e pouca produtividade.
+
+Esses problemas de bugs que aparecem do nada são ainda mais facilitados em linguagens bastante dinâmicas como Javascript.
+
+#### Javascript = Awesome!
+
+Javascript é uma linguagem de alto nível, excelente para scripiting (assim como diz em seu próprio nome), o que também nos torna muito produtivos, podendo criar várias coisas rapidamente, o que é notável especialmente no ínicio de um projeto. Já que a linguagem tem essa natureza extremamente dinâmica, isso, faz com que a gente enfrente grandes problemas ao construir grandes projetos. Isto ocorre ainda mais na Web, onde Recorrentemente percebemos várias diferenças entre implementações por parte dos navegadores - ainda mais quando isto se relaciona ao DOM. Mesmo fora do contexto puramente web, que é o caso dessa conferẽncia de hoje - explorar também o conetxto não-web - javascript não tem, por si só, várias das 'tools' nativas que diminuiriam erros, tais como static typings, erros de compilação e acesso indevido, entre vários outros problemas. O bom é que hoje em dia temos ferramentas para lidar com isso e boas práticas também.
 
 Várias sao as formas para tentarmos melhorar o ecosistema de desenvolvimento web:
 -	Padrões (W3C, TC39)
@@ -15,10 +24,16 @@ Várias sao as formas para tentarmos melhorar o ecosistema de desenvolvimento we
 
 Mas, porquê testes de fato melhoram o desenvolvimento?
 
-### Porquê testas?
 
-1. prova-se que o código está correto (ou errado)
+#### O que são testes?
+
+> Testing can never completely identify all the defects within software.[3] Instead, it furnishes a criticism or comparison that compares the state and behavior of the product against oracles—principles or mechanisms by which someone might recognize a problem. These oracles may include (but are not limited to) specifications, contracts,[4] comparable products, past versions of the same product, inferences about intended or expected purpose, user or customer expectations, relevant standards, applicable laws, or other criteria.
+
+#### Porquê testar?
+
+1. prova-se que o código está "correto"
 	1.1 Assim como, na mão, depois de codarmos nós vamos à sua execução ver se ele está funcionando como deveria, com os testes automatizados nós temos isso (inclusive com nomeclatura muito parecida em BDD). TDD Realmente trata-se apenas de tornar esse processo automatizado.
+	1.1.1 ps: correto está entre aspas pois corretude pode variar em várias formas. Por exemplo um código pode gerar o output esperado mas não ser eficiente, o que levaria, em muitos casos, mostrar que isto o mesmo não está correto. É interessante notar que esse comportamento incorreto seria também detectável!
 
 2. evita-se regressões
 	2.1 Regression Bug - voltar a implementar um bug que já havia sido tratado no passado e então volta a ocorrer. Uma vez que temos testes automatizados rodando durante o desenvolvimento corremos muito menos este risco pois (3):
@@ -55,20 +70,34 @@ Como geralmente talks sobre testes costumam ser cansativos e pouco divertidos, i
 
 Tenho um disclaimer a fazer ... na verdade programar é um "hobby" que por sinal levo bem a sério, minha área de estudo formal é a Atuária - muito disconhecida, estudamos risco financeiro --> muita matemática --> só poderia criar uma calculadora.
 
-Uma calculadora é algo muito simples. Temos um objeto que possui dois métodos primitivos, soma e multiplicação (a partir destes dois derivam-se outros).
 
+//TODO colocar algumas imagens do logo dos frameworks
+Para os testes em Node irei ilustrar primeiramente o Mocha, um framework de teste bastente conhecido e também simples. Foi mantido por muito tempo plelo TJ Holowaychuck, criador do que deve ser o mais famoso framework e acredito que maioria deve conhecer, o Express, cujos testes, naturalmente, são rodados pelo Mocha. Há vários outros bastante conhecidos, tal como o Jasmine (quem curte Angular deve conhecer, JEST do Facebook - agora utilizado bastante com React) mas ainda assim sendo o Mocha o mais simples (em minha opiniao) para se trabalhar.
 
-```
-Calculadora
+Começando então com o código :smile:
 
-export-> calculadora
-```
+Nesse primeiro passou vou tentar falar linha a linha já que talvez seja um tanto quanto diferente para quem não está nada acostumado com testes.
 
-Neste passo criamos um constructor pra classe, de modo que possamos obter um Objeto, definimos o que desejamos exportar àqueles que desejem requerir algo deste arquivo. Isto é importante pois nosso arquivo de testes irá fazer isso.
+Primeiro estou dando um `require` no [Chai](http://chaijs.com/) que se trata de uma biblioteca de asserção, isto é, vai nos dar os métodos que irão testar se nossas expectativas batem com o que é de fato obtido através de um método. Estou utilizando essa em si por que ela nos dá grande verbosidade, fica muito próximo da linguagem natural a forma com que as asserções são feitas.
 
-Para os testes em Node irei ilustrar primeiramente o Mocha, um framework de teste bastente parecido com outro bem conhecido, o Jasmine, que tem uma pegada mais voltada eu BDD (//TODO procurar sobre BDD). Existem vários outros (assim como tudo em node, há varios), incluindo alguns que rodam testes em paralelo (facebook/jest, p.ex) sendo o Mocha o mais simples (em minha opiniao) para se trabalhar.
+Em seguida obtenho nossa Calculadora.
 
 O Mocha, assim como outros frameworks de testes trabalha com encapsulamento por meio dos `Describes`, que expõe qual o escopo daquela suite - conjunto - de testes. O `it` então trata-se do teste em si, onde deve haver uma asserção (afirmação --- a palavra de fato existe). Vale lembrar que por se tratarem de funções quaisquer, qualquer código executável de javascript pode ser declarado alí.
+
+Vamos então ver se o teste passa:
+
+... FAIL
+
+Puxa, nosso teste falhou! Podemos ver no reporter então quais foram as especificações que falharam e no escopo de qual objeto isso ocorreu. Dessa forma a gente consegue detectar rapidamente onde esta a falha.
+
+Vamos então ver no código da calculadora o que pode ter ocorrido:
+
+... Tudo comentado, objeto `{}` sendo exportado do `calculadora.js`.
+
+
+Como tinha falado sobre o feedback rápido, algo legal que o mocha já tem embutido é um Watcher, que analisa os arquivos importantes ao teste e então, toda vez que ocorrer alguma modificação neles, roda os testes novamente nos mostrando então se tal alteração no arquivo fez o teste passar ou não.
+
+Tendo o teste passado, i.e, mostrando que nosso construtor está ok, podemos prosseguir com a adição de funcionalidades.
 
 
 ### Passo 1 - Métodos na Calculadora

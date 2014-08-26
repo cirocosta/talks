@@ -8,6 +8,8 @@ var karma = require('karma').server;
 var path = require('path');
 
 var karmaConfs = glob.sync('passos/**/karma.conf.js');
+var protractorConfs = glob.sync('passos/**/protractor.conf.js');
+
 
 karmaConfs.forEach(function (name) {
   var cfg = {
