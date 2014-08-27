@@ -59,7 +59,12 @@ $calculatorFont: 'monospace';
 	top: -100%;
 	left: -45%;
 	z-index: -1;
+
+	&.small {
+		width: 77%;
+	}
 }
+
 
 .row {
 	.left-content {
@@ -68,6 +73,10 @@ $calculatorFont: 'monospace';
 		margin-right: 5%;
 		vertical-align: top;
 		text-align: right;
+
+		&.small {
+			width: 20%;
+		}
 
 		ul {
 			list-style-type: none;
@@ -83,6 +92,10 @@ $calculatorFont: 'monospace';
 		display: inline-block;
 		text-align: left;
 
+		&.big {
+			width: 60%;
+		}
+
 		ul {
 			list-style-type: none;
 			padding: 0;
@@ -92,6 +105,42 @@ $calculatorFont: 'monospace';
 	}
 }
 
+.arrow:before{
+	content: "";
+	position: absolute;
+	right: -88px;
+	top: 20px;
+	width: 0;
+	height: 0;
+	border-left: 20px solid #BDC3C7;
+	border-right: 20px solid transparent;
+	border-top: 20px solid transparent;
+}
+
+.calculadora {
+	height: 960px;
+	width: 90%;
+	padding: 25px !important;
+	background: #E3E6E7;
+	display: block;
+	box-shadow: 20px 19px #BDC3C7;
+
+	.tela input {
+		border: 2px solid #A1A3A5;
+		color: #FCFCFC;
+		background: black;
+		font-family: monospace;
+		width: 90%;
+		font-size: 27px;
+		line-height: 1.467;
+		padding: 8px 12px;
+		height: 42px;
+		text-align: right;
+		-webkit-appearance: none;
+		box-shadow: none;
+		outline: none;
+	}
+}
 
 // THEME Tempate
 @import "../template/theme";

@@ -12,6 +12,8 @@
     background-color: #2980b9; }
   .left-block.color-midnightblue {
     background-color: #2c3e50; }
+  .left-block.small {
+    width: 77%; }
 
 .row .left-content {
   width: 50%;
@@ -19,6 +21,8 @@
   margin-right: 5%;
   vertical-align: top;
   text-align: right; }
+  .row .left-content.small {
+    width: 20%; }
   .row .left-content ul {
     list-style-type: none;
     padding: 0;
@@ -28,11 +32,46 @@
   width: 40%;
   display: inline-block;
   text-align: left; }
+  .row .right-content.big {
+    width: 60%; }
   .row .right-content ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     text-align: left; }
+
+.arrow:before {
+  content: "";
+  position: absolute;
+  right: -88px;
+  top: 20px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid #BDC3C7;
+  border-right: 20px solid transparent;
+  border-top: 20px solid transparent; }
+
+.calculadora {
+  height: 960px;
+  width: 90%;
+  padding: 25px !important;
+  background: #E3E6E7;
+  display: block;
+  box-shadow: 20px 19px #BDC3C7; }
+  .calculadora .tela input {
+    border: 2px solid #A1A3A5;
+    color: #FCFCFC;
+    background: black;
+    font-family: monospace;
+    width: 90%;
+    font-size: 27px;
+    line-height: 1.467;
+    padding: 8px 12px;
+    height: 42px;
+    text-align: right;
+    -webkit-appearance: none;
+    box-shadow: none;
+    outline: none; }
 
 /*********************************************
  * GLOBAL STYLES
