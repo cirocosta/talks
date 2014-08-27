@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Testa a interface da Calculadora.
+ * Testa a interface da Calc.
  */
 
 var chai = require('chai');
@@ -10,7 +10,7 @@ chai.use(chaiAP);
 var expect = chai.expect;
 
 
-describe('Calculadora', function() {
+describe('Calc', function() {
   this.timeout(6000);
 
   beforeEach(function () {
@@ -20,7 +20,7 @@ describe('Calculadora', function() {
 
   it('deve ter o titulo esperado', function() {
     expect(browser.getTitle())
-      .to.eventually.equal('Calculadora');
+      .to.eventually.equal('Calc');
   });
 
   it('deve apertar numero e aparecer na tela', function () {

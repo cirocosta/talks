@@ -3,9 +3,9 @@
 
 .left-block {
   width: 100%;
-  height: 400%;
+  height: 450%;
   position: absolute;
-  top: -100%;
+  top: -160%;
   left: -45%;
   z-index: -1; }
   .left-block.color-belizehole {
@@ -34,6 +34,14 @@
   text-align: left; }
   .row .right-content.big {
     width: 60%; }
+  .row .right-content pre {
+    margin: 0;
+    box-shadow: none;
+    width: 100%; }
+    .row .right-content pre code {
+      font-size: 1.4em;
+      width: inherit;
+      line-height: 1.3; }
   .row .right-content ul {
     list-style-type: none;
     padding: 0;

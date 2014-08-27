@@ -1,7 +1,7 @@
-function Calculadora () {}
+function Calc () {}
 
-Calculadora.prototype.soma = function(a, b) {
+Calc.prototype.soma = function(a, b) {
 	return a + b;
 };
 
-module.exports = Calculadora;
+module.exports = Calc;

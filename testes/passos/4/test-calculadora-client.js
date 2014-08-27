@@ -1,5 +1,5 @@
-describe('CalculadoraClient', function() {
-  var calc = new CalculadoraClient();
+describe('CalcClient', function() {
+  var calc = new CalcClient();
 
   describe('metodo getResults', function() {
     beforeEach(function () {

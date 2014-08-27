@@ -1,19 +1,19 @@
-var Calculadora = Calculadora || {};
+var Calc = Calc || {};
 var expect = expect || {};
 
 if (typeof exports === 'object') {
 	expect = require('chai').expect;
-	Calculadora = require('./calculadora');
+	Calc = require('./calculadora');
 } else {
 	expect = chai.expect;
 }
 
-describe('Calculadora', function() {
+describe('Calc', function() {
 
 	var calculadora;
 
 	it('deve ser instanciavel', function() {
-		calculadora = new Calculadora();
+		calculadora = new Calc();
 		expect(!!calculadora).to.equal(true);
 	});
 

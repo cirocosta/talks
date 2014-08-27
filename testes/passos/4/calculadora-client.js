@@ -1,6 +1,6 @@
-function CalculadoraClient () {}
+function CalcClient () {}
 
-CalculadoraClient.prototype.getResult = function (data) {
+CalcClient.prototype.getResult = function (data) {
   return jQuery.ajax({
     type: 'POST',
     dataType: 'json',

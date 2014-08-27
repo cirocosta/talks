@@ -16,11 +16,12 @@ karmaConfs.forEach(function (name) {
     configFile: path.resolve(__dirname, name),
     singleRun: true
   };
+  var p = path.relative(__dirname, name);
 
   if (process.argv[3] === '--headless')
     cfg.browsers = ['PhantomJS'];
 
-  gulp.task('test-karma-' + path.relative(__dirname, name), function (done) {
+  gulp.task('test-karma-' + p, function (done) {
     karma.start(cfg, done);
   });
 });

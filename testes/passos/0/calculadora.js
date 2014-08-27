@@ -1,3 +1,3 @@
-function Calculadora () {}
+function Calc () {}
 
-module.exports = Calculadora;
+module.exports = Calc;

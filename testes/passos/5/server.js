@@ -1,11 +1,11 @@
 'use strict';
 
-var Calculadora = require('./calculadora')
+var Calc = require('./calculadora')
 	,	express = require('express')
 	,	bodyParser = require('body-parser')
 	,	app = express();
 
-var calculadora = new Calculadora();
+var calculadora = new Calc();
 
 app.use('/', express.static(__dirname));
 app.use(bodyParser.json());
