@@ -1,0 +1,97 @@
+// MIXINS and SETTINGS
+@import "../template/mixins";
+@import "../template/settings";
+
+// COLORS
+$colorWetAsphalt: #34495E;
+$colorMidnightBlue: #2C3E50;
+
+$colorClouds: #ECF0F1;
+$colorSilver: #BDC3C7;
+
+$colorConcrete: #95A5A6;
+$colorAsbestos: #7F8C8D;
+
+$colorEmerald: #2ECC71;
+$colorNephritis: #27AE60;
+
+$colorTurquoise: #1ABC9C;
+$colorGreenSea: #16A085;
+
+$colorPeterDriver: #3498DB;
+$colorBelizeHole: #2980B9;
+
+$colorWisteria: #8E44AD;
+$colorAmethyst: #9B59B6;
+
+
+// SETTINGS overwriting
+$headingFont: 'Helvetica', 'Helvetica Neue';
+$headingTextTransform: none;
+$headingTextShadow: none !important;
+
+$backgroundColor: $colorWetAsphalt;
+
+$linkColor: $colorBelizeHole;
+$linkColorHover: lighten( $linkColor, 20% );
+
+// THEME specifics
+
+$calculatorFont: 'monospace';
+
+.reveal {
+	font-weight: 900 !important;
+}
+
+.left-block {
+
+	&.color-belizehole {
+		background-color: $colorBelizeHole;
+	}
+
+	&.color-midnightblue {
+		background-color: $colorMidnightBlue;
+	}
+
+	width: 100%;
+	height: 400%;
+	position: absolute;
+	top: -100%;
+	left: -45%;
+	z-index: -1;
+}
+
+.row {
+	.left-content {
+		width: 50%;
+		display: inline-block;
+		margin-right: 5%;
+		vertical-align: top;
+		text-align: right;
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			text-align: right;
+		}
+
+	}
+
+	.right-content {
+		width: 40%;
+		display: inline-block;
+		text-align: left;
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			text-align: left;
+		}
+	}
+}
+
+
+// THEME Tempate
+@import "../template/theme";

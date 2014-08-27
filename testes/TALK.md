@@ -10,7 +10,6 @@ Esse talk é logo depois do almoço, então tentei deixar o mais intuitivo e com
 Já vou começar com uma história.
 
 
-
 A primeira vez que eu escrevi um Teste deve ter sido bastante parecida com a de muita gente: já tinha um projeto que estava ficando grande e díficil de manter, resolvia um bug e criava outros dois, o que cria uma situação de muita raiva e pouca produtividade.
 
 #### Javascript ... Liberdade .. Problemas
