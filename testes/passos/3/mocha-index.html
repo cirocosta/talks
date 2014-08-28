@@ -13,9 +13,16 @@
 	<script>mocha.setup('bdd');</script>
 	<script src="test-calculadora.js"></script>
 	<script>
+
+    var UA = navigator.usarAgent || 'No-User-Agent';
 		mocha.checkLeaks();
 		mocha.globals(['Calc']);
-		mocha.run();
+		var runner = mocha.run();
+
+    runner.on('test end', function (test) {
+      console.log(runner.stats);
+    });
+
 	</script>
 </body>
 </html>
