@@ -10,14 +10,14 @@ app.use(logger('combined'));
 app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function (socket) {
-  console.log('A user connected');
+  socket.on('user-agent', function (data) {
+    console.log(data);
+  });
 
-  socket.emit('news', {hello: 'world'});
-  socket.on('my other event', function (data) {
+  socket.on('test-data', function (data) {
     console.log(data);
   });
 });
-
 
 http.listen(3000, function () {
   console.log('Listening on *:3000');
