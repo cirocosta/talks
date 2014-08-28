@@ -8,3 +8,6 @@ I plan to keep here the resources that i utilize in my talks so that i am able t
 
 Feel free to create pull requests and contribute in the way you prefer :smile:
 
+## Testes
+
+Presented at [NodeBR, 30 Aug, 2014](http://www.meetup.com/NodeBR-Sao-Paulo/events/201165962/).
