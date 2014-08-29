@@ -4,11 +4,18 @@
 
 ### Introdução - Javascript Rules!
 
-Esse talk é logo depois do almoço, então tentei deixar o mais intuitivo e com menos blá blá blá possível. Vou tentar primeiramente convencê-los (àqueles que talvez não curtam, ou realmente não connheçam ou talvez apenas pra gerar uma discussão fazendo então que todo mundo aprenda.
 
+Gostaria de dar um pouco de contexto do porquê que eu considero válido apresentar uma palestra sobre Testes automatizados em um meetup 'for dummies', como foi entitulado.
 
-Já vou começar com uma história.
+É .. primeiramente, eu sou o Ciro, Ciro Costa, essa é a minha segunda palestra, trabalhei um tempo no Apontador com Node, bastante javascript, agora tenho me dedicado praticamente apenas a projetos abertos e estudos da faculdade.
 
+Há alguns meses eu e alguns colegas de faculdade a gente se envolveu com um projeto realmente animal: construir uma Pipetadora Automática, com vários patamares e uma interface amigável. Aí então chego ao ponto do contexto de querer fazer uma palestra sobre testes: Tenho me infiltrado muito então nesses projetos multidisciplinares, incluindo galera de Química, Mecânica e outras áreas bastante distantes de computação.
+
+E aí vem o lance: a maioria já programou, ou programa, alguns outros conhecidos mesmo, já programaram bastante mas nunca se realmente interessaram em prover testes automatizados em seus projetos, mesmo em projetos bastante interessantes e de complexidade alta. E isso me faz lembrar de mim mesmo, que quando comecei a mexer com web e entrei em contato com Django (que é, a grosso modo, o similar do Rails para Python) eu pensava que testar era algo pra profissionais e isso não era pra ser feito por mim. Me lembro que na época havia inclusive discussões quanto a colocar ou não já no tutorial introdutório a seção sobre testes, o que pra mim não fazia sentido algum.
+
+Mas parece que as coisas vem mudando bastante. Para a pipetadora eu decidi usar AngularJS para me forçar a entrar nesse mundo de Frameworks e entender direito como as coisas andam. E foi muito interessante porquê o Angular por si só já tem em seus princípios a testabilidade, sendo então desde o princípio mostrado como se testam as coisas nele.
+
+Quem nunca testou pode agora estar bastante confuso, pensando que talvez isso seja algo bom, talvez difícil, talvez chato.
 
 A primeira vez que eu escrevi um Teste deve ter sido bastante parecida com a de muita gente: já tinha um projeto que estava ficando grande e díficil de manter, resolvia um bug e criava outros dois, o que cria uma situação de muita raiva e pouca produtividade.
 

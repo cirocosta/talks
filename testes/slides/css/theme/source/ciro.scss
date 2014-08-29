@@ -7,7 +7,8 @@ $colorWetAsphalt: #34495E;
 $colorMidnightBlue: #2C3E50;
 
 $colorClouds: #ECF0F1;
-$colorSilver: #BDC3C7;
+$colorBaseCalculadora: #E3E6E7;
+$colorSilver: darken($colorBaseCalculadora, 10%);
 
 $colorConcrete: #95A5A6;
 $colorAsbestos: #7F8C8D;
@@ -24,6 +25,8 @@ $colorBelizeHole: #2980B9;
 $colorWisteria: #8E44AD;
 $colorAmethyst: #9B59B6;
 
+$colorOrangeButton: #E67E22;
+
 
 // SETTINGS overwriting
 $headingFont: 'Helvetica', 'Helvetica Neue';
@@ -36,6 +39,17 @@ $linkColor: $colorBelizeHole;
 $linkColorHover: lighten( $linkColor, 20% );
 
 // THEME specifics
+
+@font-face {
+    font-family: 'minecraftiaregular';
+    src: url('../../assets/fonts/minecraftia/minecraftia2-webfont.eot');
+    src: url('../../assets/fonts/minecraftia/minecraftia2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../assets/fonts/minecraftia/minecraftia2-webfont.woff') format('woff'),
+         url('../../assets/fonts/minecraftia/minecraftia2-webfont.ttf') format('truetype'),
+         url('../../assets/fonts/minecraftia/minecraftia2-webfont.svg#minecraftiaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 $calculatorFont: 'monospace';
 
@@ -118,11 +132,11 @@ $calculatorFont: 'monospace';
 .arrow:before{
 	content: "";
 	position: absolute;
-	right: -88px;
+	right: 7px;
 	top: 20px;
 	width: 0;
 	height: 0;
-	border-left: 20px solid #BDC3C7;
+	border-left: 20px solid $colorSilver;
 	border-right: 20px solid transparent;
 	border-top: 20px solid transparent;
 }
@@ -131,25 +145,73 @@ $calculatorFont: 'monospace';
 	height: 960px;
 	width: 90%;
 	padding: 25px !important;
-	background: #E3E6E7;
+	background: $colorBaseCalculadora;
 	display: block;
-	box-shadow: 20px 19px #BDC3C7;
+	box-shadow: 20px 19px $colorSilver;
 
-	.tela input {
+	.tela textarea {
+		box-shadow: inset 5px 5px $colorSilver;
 		border: 2px solid #A1A3A5;
-		color: #FCFCFC;
-		background: black;
-		font-family: monospace;
+		color: $colorClouds;
+		background: none repeat scroll 0% 0% #000;
+		font-family: 'minecraftiaregular';
 		width: 90%;
-		font-size: 27px;
+		font-size: 87px;
 		line-height: 1.467;
 		padding: 8px 12px;
-		height: 42px;
+		height: 292px;
 		text-align: right;
-		-webkit-appearance: none;
 		box-shadow: none;
-		outline: none;
+		outline: medium none;
+		text-transform: uppercase;
 	}
+
+	.keypad {
+		margin-top: 50px;
+
+		ul {
+			margin: 0;
+		}
+
+		li {
+			display: inline;
+			list-style-type: none;
+		}
+
+		button {
+			margin-bottom: 30px;
+			width: 191px;
+			height: 191px;
+			text-decoration: none;
+			cursor: pointer;
+			border: none;
+			background-color: $colorOrangeButton;
+			font-size: 50px;
+			outline: none;
+			color: white;
+
+			&:active {
+				background-color: darken($colorOrangeButton, 20%);
+			}
+
+			&.esp1 {
+				background-color: $colorAsbestos;
+
+				&:active {
+					background-color: darken($colorAsbestos, 20%);
+				}
+			}
+
+			&.esp2 {
+				background-color: $colorBelizeHole;
+
+				&:active {
+					background-color: darken($colorBelizeHole, 20%);
+				}
+			}
+		}
+	}
+
 }
 
 // THEME Tempate

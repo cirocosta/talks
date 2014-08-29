@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'minecraftiaregular';
+  src: url("../../assets/fonts/minecraftia/minecraftia2-webfont.eot");
+  src: url("../../assets/fonts/minecraftia/minecraftia2-webfont.eot?#iefix") format("embedded-opentype"), url("../../assets/fonts/minecraftia/minecraftia2-webfont.woff") format("woff"), url("../../assets/fonts/minecraftia/minecraftia2-webfont.ttf") format("truetype"), url("../../assets/fonts/minecraftia/minecraftia2-webfont.svg#minecraftiaregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 .reveal {
   font-weight: 900 !important; }
 
@@ -51,11 +58,11 @@
 .arrow:before {
   content: "";
   position: absolute;
-  right: -88px;
+  right: 7px;
   top: 20px;
   width: 0;
   height: 0;
-  border-left: 20px solid #BDC3C7;
+  border-left: 20px solid #c8cdcf;
   border-right: 20px solid transparent;
   border-top: 20px solid transparent; }
 
@@ -63,23 +70,52 @@
   height: 960px;
   width: 90%;
   padding: 25px !important;
-  background: #E3E6E7;
+  background: #e3e6e7;
   display: block;
-  box-shadow: 20px 19px #BDC3C7; }
-  .calculadora .tela input {
+  box-shadow: 20px 19px #c8cdcf; }
+  .calculadora .tela textarea {
+    box-shadow: inset 5px 5px #c8cdcf;
     border: 2px solid #A1A3A5;
-    color: #FCFCFC;
-    background: black;
-    font-family: monospace;
+    color: #ecf0f1;
+    background: none repeat scroll 0% 0% #000;
+    font-family: 'minecraftiaregular';
     width: 90%;
-    font-size: 27px;
+    font-size: 87px;
     line-height: 1.467;
     padding: 8px 12px;
-    height: 42px;
+    height: 292px;
     text-align: right;
-    -webkit-appearance: none;
     box-shadow: none;
-    outline: none; }
+    outline: medium none;
+    text-transform: uppercase; }
+  .calculadora .keypad {
+    margin-top: 50px; }
+    .calculadora .keypad ul {
+      margin: 0; }
+    .calculadora .keypad li {
+      display: inline;
+      list-style-type: none; }
+    .calculadora .keypad button {
+      margin-bottom: 30px;
+      width: 191px;
+      height: 191px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      background-color: #e67e22;
+      font-size: 50px;
+      outline: none;
+      color: white; }
+      .calculadora .keypad button:active {
+        background-color: #924d10; }
+      .calculadora .keypad button.esp1 {
+        background-color: #7f8c8d; }
+        .calculadora .keypad button.esp1:active {
+          background-color: #4e5758; }
+      .calculadora .keypad button.esp2 {
+        background-color: #2980b9; }
+        .calculadora .keypad button.esp2:active {
+          background-color: #164666; }
 
 /*********************************************
  * GLOBAL STYLES

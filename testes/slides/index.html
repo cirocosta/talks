@@ -96,13 +96,22 @@
         <div class="calculadora">
           <div class="arrow"></div>
           <div class="tela">
-            <input value="Mão na Massa!" autofocus="autofocus"/>
+            <textarea>mao na Massa!</textarea>
           </div>
 
           <div class="keypad">
-            <div class="numerico">
-
-            </div>
+            <ul class="linha">
+              <li><button class="esp1">OFF</button></li>
+              <li><button class="esp2">+</button></li>
+              <li><button class="esp2">*</button></li>
+              <li><button class="esp2">/</button></li>
+            </ul>
+            <ul class="linha">
+              <li><button class="esp1">=</button></li>
+              <li><button>7</button></li>
+              <li><button>8</button></li>
+              <li><button>9</button></li>
+            </ul>
           </div>
         </div>
       </section>
@@ -267,7 +276,7 @@ Calc.soma = function(a, b) {
   <script src="js/reveal.min.js"></script>
   <script>
     Reveal.initialize({
-      controls: true,
+      controls: false,
       progress: false,
       history: true,
       center: true,
