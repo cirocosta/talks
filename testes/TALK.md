@@ -87,12 +87,11 @@ Como geralmente talks sobre testes costumam ser cansativos e pouco divertidos, i
 Tenho um disclaimer a fazer ... na verdade programar é um "hobby" que por sinal levo bem a sério, minha área de estudo formal é a Atuária - muito disconhecida, estudamos risco financeiro --> muita matemática --> só poderia criar uma calculadora.
 
 
-//TODO colocar algumas imagens do logo dos frameworks
-Para os testes em Node irei ilustrar primeiramente o Mocha, um framework de teste bastente conhecido e também simples. Foi mantido por muito tempo plelo TJ Holowaychuck, criador do que deve ser o mais famoso framework e acredito que maioria deve conhecer, o Express, cujos testes, naturalmente, são rodados pelo Mocha. Há vários outros bastante conhecidos, tal como o Jasmine (quem curte Angular deve conhecer, JEST do Facebook - agora utilizado bastante com React) mas ainda assim sendo o Mocha o mais simples (em minha opiniao) para se trabalhar.
+Para os testes em Node irei ilustrar primeiramente o Mocha, um framework de teste bastente conhecido e também simples. Foi mantido por muito tempo pelo TJ Holowaychuck, criador do que deve ser o mais famoso framework e acredito que maioria deve conhecer, o Express, cujos testes, naturalmente, são rodados pelo Mocha. Há vários outros bastante conhecidos, tal como o Jasmine (quem curte Angular deve conhecer, JEST do Facebook - agora utilizado bastante com React) mas ainda assim sendo o Mocha o mais simples (em minha opiniao) para se trabalhar.
 
 Começando então com o código :smile:
 
-Nesse primeiro passou vou tentar falar linha a linha já que talvez seja um tanto quanto diferente para quem não está nada acostumado com testes.
+Nesse primeiro passou vo tentar falar linha a linha já que talvez seja um tanto quanto diferente para quem não está nada acostumado com testes.
 
 Primeiro estou dando um `require` no [Chai](http://chaijs.com/) que se trata de uma biblioteca de asserção, isto é, vai nos dar os métodos que irão testar se nossas expectativas batem com o que é de fato obtido através de um método. Estou utilizando essa em si por que ela nos dá grande verbosidade, fica muito próximo da linguagem natural a forma com que as asserções são feitas.
 
