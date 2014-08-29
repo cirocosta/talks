@@ -11,3 +11,5 @@ Feel free to create pull requests and contribute in the way you prefer :smile:
 ## Testes
 
 Presented at [NodeBR, 30 Aug, 2014](http://www.meetup.com/NodeBR-Sao-Paulo/events/201165962/).
+
+*i plan to host this presentation on gh-pages but i haven't done yet. For building it locally, go check testes/README.md*
