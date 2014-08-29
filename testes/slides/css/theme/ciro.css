@@ -54,9 +54,9 @@ blockquote {
   .row .right-content pre {
     margin: 0;
     box-shadow: none;
-    width: 100%; }
+    width: 120%; }
     .row .right-content pre code {
-      font-size: 1.4em;
+      font-size: 1.6em;
       width: inherit;
       line-height: 1.3;
       max-height: none; }
@@ -117,15 +117,15 @@ blockquote {
       font-size: 50px;
       outline: none;
       color: white; }
-      .calculadora .keypad button:active {
+      .calculadora .keypad button.clicado, .calculadora .keypad button:active {
         background-color: #924d10; }
       .calculadora .keypad button.esp1 {
         background-color: #7f8c8d; }
-        .calculadora .keypad button.esp1:active {
+        .calculadora .keypad button.esp1.clicado, .calculadora .keypad button.esp1:active {
           background-color: #4e5758; }
       .calculadora .keypad button.esp2 {
         background-color: #2980b9; }
-        .calculadora .keypad button.esp2:active {
+        .calculadora .keypad button.esp2.clicado, .calculadora .keypad button.esp2:active {
           background-color: #164666; }
 
 #link-contribuir {

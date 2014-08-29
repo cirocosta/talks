@@ -18,63 +18,110 @@
     }
   }
 
+  /**
+   * Simulates a click. This is necessary
+   * because .click() won't active ':active'
+   * selector as we expect (although the Active
+   * event might get fired).
+   */
+  function simulateClick (button, klass) {
+    var origClass = button.getAttribute('class');
+
+    button.setAttribute('class', origClass + ' ' + klass);
+
+    setTimeout(function () {
+      button.setAttribute('class', origClass);
+    }, 100);
+  }
+
+  var buttonMap =
+    Array.prototype.slice.call(document.querySelectorAll('.keypad button'))
+      .reduce(function (mapping, elem) {
+        mapping[elem.innerHTML] = elem;
+
+        return mapping;
+      }, {});
+
   var kbFuncs = [
-    [null, function (elem) {
-      elem.value += 'L';
+    [null, function (tela) {
+      simulateClick(buttonMap['9'], 'clicado');
+      tela.value += '9';
     }],
-    [1000, function (elem) {
-      elem.value += 'E';
+    [400, function (tela) {
+      simulateClick(buttonMap['*'], 'clicado');
+      tela.value += '*';
     }],
-    [400, function (elem) {
-      elem.value += 'T';
+    [400, function (tela) {
+      simulateClick(buttonMap['8'], 'clicado');
+      tela.value += '8';
     }],
-    [400, function (elem) {
-      elem.value += '\'';
+    [400, function (tela) {
+      simulateClick(buttonMap['='], 'clicado');
+      tela.value += '=\n';
     }],
-    [400, function (elem) {
-      elem.value += 'S';
+    [300, function (tela) {
+      tela.value += '72';
     }],
-    [400, function (elem) {
-      elem.value += ' ';
+    [3000, function (tela) {
+      simulateClick(buttonMap['ON'], 'clicado');
+      tela.value = '';
     }],
-    [200, function (elem) {
-      elem.value += 'C';
+    [400, function (tela) {
+      tela.value += 'L';
     }],
-    [200, function (elem) {
-      elem.value += 'O';
+    [600, function (tela) {
+      tela.value += 'E';
     }],
-    [200, function (elem) {
-      elem.value += 'D';
+    [400, function (tela) {
+      tela.value += 'T';
     }],
-    [200, function (elem) {
-      elem.value += 'E\n';
+    [400, function (tela) {
+      tela.value += '\'';
     }],
-    [150, function (elem) {
-      elem.value += '\\';
+    [400, function (tela) {
+      tela.value += 'S';
     }],
-    [150, function (elem) {
-      elem.value += 'O';
+    [400, function (tela) {
+      tela.value += ' ';
     }],
-    [150, function (elem) {
-      elem.value += '/';
+    [200, function (tela) {
+      tela.value += 'C';
     }],
-    [150, function (elem) {
-      elem.value += '\\';
+    [200, function (tela) {
+      tela.value += 'O';
     }],
-    [150, function (elem) {
-      elem.value += 'O';
+    [200, function (tela) {
+      tela.value += 'D';
     }],
-    [150, function (elem) {
-      elem.value += '/';
+    [200, function (tela) {
+      tela.value += 'E\n';
     }],
-    [250, function (elem) {
-      elem.value += '\\';
+    [150, function (tela) {
+      tela.value += '\\';
     }],
-    [250, function (elem) {
-      elem.value += 'O';
+    [150, function (tela) {
+      tela.value += 'O';
     }],
-    [250, function (elem) {
-      elem.value += '/';
+    [150, function (tela) {
+      tela.value += '/';
+    }],
+    [150, function (tela) {
+      tela.value += '\\';
+    }],
+    [150, function (tela) {
+      tela.value += 'O';
+    }],
+    [150, function (tela) {
+      tela.value += '/';
+    }],
+    [250, function (tela) {
+      tela.value += '\\';
+    }],
+    [250, function (tela) {
+      tela.value += 'O';
+    }],
+    [250, function (tela) {
+      tela.value += '/';
     }]
   ];
 
@@ -90,7 +137,7 @@
 
     setTimeout(timedExec(kbFuncs.map(function (arr) {
       return [arr[0], arr[1].bind(null, ta)];
-    })), 300);
+    })), 1000);
   });
 
 })();

@@ -101,7 +101,7 @@
 
           <div class="keypad">
             <ul class="linha">
-              <li><button class="esp1">OFF</button></li>
+              <li><button class="esp1">ON</button></li>
               <li><button class="esp2">+</button></li>
               <li><button class="esp2">*</button></li>
               <li><button class="esp2">/</button></li>
@@ -168,8 +168,10 @@ module.exports = Calc;
 
         <section data-background="#3F3F3F">
           <div class="left-block color-midnightblue small"></div>
-          <div class="row">
-            <div class="left-content small">Teste Soma</div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Teste Soma</p>
+            </div>
             <div class="right-content big">
               <pre><code data-trim class="javascript">
 describe('.soma', function () {
@@ -186,7 +188,7 @@ describe('.soma', function () {
           </div>
           <br>
 
-          <div class="row">
+          <div class="row fragment fade-in">
             <div class="left-content small">Func. Soma</div>
             <div class="right-content big">
               <pre><code data-trim class="javascript">
@@ -202,7 +204,7 @@ Calc.soma = function(a, b) {
 
         <section data-background="#3F3F3F">
           <div class="left-block color-midnightblue small"></div>
-          <div class="row">
+          <div class="row fragment fade-in">
             <div class="left-content small">Func. Mult Async</div>
             <div class="right-content big">
               <pre><code data-trim class="javascript">
@@ -217,7 +219,7 @@ Calc.mult = function (a, b, cb) {
           </div>
           <br>
 
-          <div class="row">
+          <div class="row fragment fade-in">
             <div class="left-content small">Teste Mult Async</div>
             <div class="right-content big">
               <pre><code data-trim class="javascript">
@@ -239,11 +241,46 @@ it('deve mult', function(fim){
       </section>
 
 
+      <!-- Passo 3 -->
+
       <section>
+
         <section>
-          <h2>Real Browser --> <strong>Karma</strong></h2>
+          <h2>E nos browsers?</h2>
+          <img src="assets/logo-mocha.png" alt="Logo Mocha">
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>mocha-index.html</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="html fragment shrink">
+&lt;div id="mocha"&gt;&lt;/div&gt;
+
+&lt;script src="calculadora.js"&gt;&lt;/script&gt;
+&lt;script src="chai.js"&gt;&lt;/script&gt;
+&lt;script src="mocha.js"&gt;&lt;/script&gt;
+&lt;script&gt;mocha.setup('bdd');&lt;/script&gt;
+&lt;script src="test-calculadora.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  mocha.checkLeaks();
+  mocha.globals(['Calc']);
+  mocha.run();
+&lt;/script&gt;
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Automatizar --> <strong>Karma</strong></h2>
           <img src="assets/logo-karma.png" alt="Logo Karma">
         </section>
+
 
         <section data-background="#3F3F3F">
           <div class="left-block color-midnightblue small"></div>
@@ -277,34 +314,210 @@ config.set({
       </section>
 
 
+      <!-- Passo 4 -->
+
       <section>
         <section>
           <h2>jQuery --> <strong>SinonJS</strong></h2>
           <img src="assets/logo-sinonjs.jpg" alt="Logo SinonJS">
         </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Calculadora Client</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+Client.get = function(data){
+  return $.ajax({
+    type: 'POST',
+    dataType: 'json',
+    url: '/multiplica',
+    data: data
+  });
+};
+              </code></pre>
+            </div>
+          </div>
+
+        </section>
+
         <section>
-          <pre><code>4. Testes com jQuery no Client --> spy em `$.ajax`</code></pre>
+          <h1>Como testar o <code style="color:#E6E6A4;">$.ajax</code> sem servidor?</h1>
+        </section>
+
+
+        <section data-background="assets/007.jpg">
+          <h1 class="fragment fade-in" style="text-shadow: 4px 4px 10px black !important">Sinon SPY!</h1>
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p><em>Antes:</em> Prepara o Spy</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+beforeEach(function () {
+  sinon.spy($, 'ajax');
+});
+              </code></pre>
+            </div>
+          </div>
+          <br><br>
+
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p><em>Depois:</em> Limpa o Spy</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+afterEach(function () {
+  $.ajax.restore();
+});
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Chamou?</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+it('deve chamar ajax', function(){
+  calc.get({});
+
+  expect(jQuery.ajax.called)
+    .to.equal(true);
+});
+              </code></pre>
+            </div>
+          </div>
+          <br>
+
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>e o URL?</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+it('deve acertar url', function(){
+  calc.getResult({});
+
+  var esperado = '/multiplica';
+  var obtido = $.ajax.getCall(0)
+                  .args[0].url;
+
+  expect(obtido).to.equal(esperado)
+});
+              </code></pre>
+            </div>
+          </div>
         </section>
       </section>
+
+      <!-- Passo 5 -->
 
       <section>
         <section>
           <h2>E2E --> Protractor</h2>
-          <img src="assets/logo-protractor.png" alt="Logo Protractor">
+          <img src="assets/logo-protractor.png" style="border: 0px none; background: #FFF; width: 100%;" alt="Logo Protractor"> </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Config Protractor</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+exports.config = {
+  framework: 'mocha',
+  specs: ['spec.js',],
+  capabilities: {
+    'browserName': 'chrome',
+    'chromeOptions': {
+        'args': [
+          'incognito',
+          'disable-extensions',
+          'enable-crash-reporter-for-testing'
+        ]
+    }
+  }
+};
+              </code></pre>
+            </div>
+          </div>
         </section>
+
         <section>
-          <pre><code>5. Testes de Interface da Calculadora</code></pre>
+          <h1>E o teste em si?</h1>
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Prepara e testa Titulo</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+beforeEach() ->
+  browser.get('/passos/5');
+  browser.ignoreSynchronization = true;
+
+it('deve acertar titulo') ->
+  expect(browser.getTitle())
+      .to.eventually.equal('Titulo');
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Emite cliques e verifica</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+it('clica e numero aparece') ->
+  var tecla1 =
+    element(by.css('SELETOR1'));
+  var tecla2 =
+    element(by.css('SELETOR2'));
+  var teclaMult =
+    element(by.css('SELETOR_MULT'));
+
+  tecla1.click(); teclaMult.click();
+  tecla2.click();
+
+  expect(element(by.css('SELETOR_TELA'))
+      .getAttribute('value'))
+        .to.eventually.equal('1*2');
+  });
+              </code></pre>
+            </div>
+          </div>
         </section>
       </section>
 
       <section>
         <section>
           <h2><strong>Todo</strong> o código aqui é testável!</h2>
-          <h1>Gulp</h1>
+          <img src="assets/logo-gulp.png" style="border: 0; padding: 1% 10%;" alt="Logo do GulpJS">
         </section>
 
         <section>
-          <h2>E vocês podem contribuir :)</h2>
+          <h2>Vocês também podem contribuir!</h2>
 
           <a id="link-contribuir">bit.ly/nodebr-testes</a>
         </section>
@@ -320,7 +533,7 @@ config.set({
             <h2>testar</h2>
           </div>
           <div class="right-content">
-            <h3>VALE A PENA</h3>
+            <h3 class="fragment roll-in">VALE A PENA</h3>
           </div>
         </div>
         <div class="row">
