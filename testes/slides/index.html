@@ -197,6 +197,45 @@ Calc.soma = function(a, b) {
             </div>
           </div>
         </section>
+
+        <!-- Passo 2 -->
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row">
+            <div class="left-content small">Func. Mult Async</div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+Calc.mult = function (a, b, cb) {
+  setTimeout(function () {
+    cb(null, a * b);
+  }, 500);
+};
+
+              </code></pre>
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="left-content small">Teste Mult Async</div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+it('deve mult', function(fim){
+  var esperado = 6;
+
+  calc.mult(2, 3, function(e, res){
+    if (e) fim(e);
+
+    expect(res)
+      .to.equal(esperado);
+    fim();
+  });
+});
+              </code></pre>
+            </div>
+          </div>
+        </section>
       </section>
 
 
@@ -206,8 +245,34 @@ Calc.soma = function(a, b) {
           <img src="assets/logo-karma.png" alt="Logo Karma">
         </section>
 
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Config Karma</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+config.set({
+  frameworks: ['mocha'],
+
+  files: [
+      "chai.js",
+      "calculadora.js",
+      "test-*.js"
+  ],
+
+  browsers: ['Chrome',
+             'Firefox',
+             'PhantomJS'],
+});
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
         <section>
-          <pre><code>3. Teste do Mocha no browser (Manual) + Teste automatizado com Karma</code></pre>
+          <img src="assets/mocha-html-test.png" alt="Teste HTML Mocha">
         </section>
       </section>
 

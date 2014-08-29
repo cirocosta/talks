@@ -4,9 +4,9 @@ Calc.prototype.soma = function(a, b) {
 	return a + b;
 };
 
-Calc.prototype.multiplica = function (a, b, callback) {
+Calc.prototype.mult = function (a, b, cb) {
 	setTimeout(function () {
-		callback(null, a*b);
+		cb(null, a * b);
 	}, 500);
 };
 
