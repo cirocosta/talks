@@ -45,7 +45,7 @@
       <section data-background="#3498DB">
         <h1>Javascript</h1>
         <br>
-        <h1>Liberadade</h1>
+        <h1>Liberdade</h1>
         <br>
         <h1>Problemas</h1>
       </section>
@@ -58,10 +58,10 @@
         <h3>Padrões, Bibliotecas, <strong>Testes</strong></h3>
       </section>
 
-      <section data-background="#8E44AD">
-        <h1>Teste,</h1>
+      <section data-background="#F0F0F0">
+        <h1 style="color: #3498DB">Teste,</h1>
         <blockquote>
-          "<strong>Compares</strong> the state and behavior of the product against <strong>oracle-principles</strong>"
+          "<strong style="color: #3498DB">Compara</strong> o estado e comportamento do produto contra <strong style="color: #3498DB">oráculos</strong>"
         </blockquote>
       </section>
 
@@ -92,7 +92,7 @@
         <video class="stretch" data-autoplay src="assets/android-espresso.mp4" loop></video>
       </section>
 
-      <section>
+      <section data-state="slide-calc">
         <div class="calculadora">
           <div class="arrow"></div>
           <div class="tela">
@@ -120,8 +120,11 @@
 
       <section>
         <section>
-          <h2>Mocha</h2>
-          <h2>Chai</h2>
+          <h2>Base: <strong>Mocha</strong> + <strong>Chai</strong></h2>
+          <ul class="list-inline">
+            <li><img src="assets/logo-mocha.png" alt="Logo Mocha"></li>
+            <li><img src="assets/logo-chai.png" width="300" alt="Logo Chai"></li>
+          </ul>
         </section>
 
         <!-- Passo 0 -->
@@ -199,8 +202,8 @@ Calc.soma = function(a, b) {
 
       <section>
         <section>
-          <h2>Browser?</h2>
-          <h1>Karma!</h1>
+          <h2>Real Browser --> <strong>Karma</strong></h2>
+          <img src="assets/logo-karma.png" alt="Logo Karma">
         </section>
 
         <section>
@@ -211,8 +214,8 @@ Calc.soma = function(a, b) {
 
       <section>
         <section>
-          <h2>jQuery?</h2>
-          <h1>SinonJS!</h1>
+          <h2>jQuery --> <strong>SinonJS</strong></h2>
+          <img src="assets/logo-sinonjs.jpg" alt="Logo SinonJS">
         </section>
         <section>
           <pre><code>4. Testes com jQuery no Client --> spy em `$.ajax`</code></pre>
@@ -221,8 +224,8 @@ Calc.soma = function(a, b) {
 
       <section>
         <section>
-          <h2>E2E</h2>
-          <h1>Protractor</h1>
+          <h2>E2E --> Protractor</h2>
+          <img src="assets/logo-protractor.png" alt="Logo Protractor">
         </section>
         <section>
           <pre><code>5. Testes de Interface da Calculadora</code></pre>
@@ -238,7 +241,7 @@ Calc.soma = function(a, b) {
         <section>
           <h2>E vocês podem contribuir :)</h2>
 
-          <a>bit.ly/nodebr-testes</a>
+          <a id="link-contribuir">bit.ly/nodebr-testes</a>
         </section>
       </section>
 
@@ -292,5 +295,6 @@ Calc.soma = function(a, b) {
       ]
     });
   </script>
+  <script src="js/type-in-cal.js"></script>
 </body>
 </html>

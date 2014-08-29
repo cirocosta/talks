@@ -8,6 +8,12 @@
 .reveal {
   font-weight: 900 !important; }
 
+blockquote {
+  color: #99B8CC;
+  font-size: 1.5em !important;
+  line-height: 1.1 !important;
+  width: 100% !important; }
+
 .left-block {
   width: 100%;
   height: 450%;
@@ -21,6 +27,10 @@
     background-color: #2c3e50; }
   .left-block.small {
     width: 77%; }
+
+.list-inline li {
+  display: inline;
+  list-style-type: none; }
 
 .row .left-content {
   width: 50%;
@@ -116,6 +126,14 @@
         background-color: #2980b9; }
         .calculadora .keypad button.esp2:active {
           background-color: #164666; }
+
+#link-contribuir {
+  font-size: 2em;
+  width: 100%;
+  background: none repeat scroll 0% 0% #FFF;
+  display: block;
+  margin-top: 30px;
+  padding: 30px; }
 
 /*********************************************
  * GLOBAL STYLES
