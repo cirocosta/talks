@@ -1,19 +1,25 @@
-// Karma configuration
-// Generated on Fri Aug 22 2014 17:56:36 GMT-0300 (BRT)
-
+/**
+ * Configuração do Karma. Trata-se do arquivo
+ * gerado pelo mesmo (karma init karma.conf.js)
+ * porém com os comentários traduzidos e alguns
+ * outros adicionados.
+ */
 module.exports = function(config) {
   config.set({
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)
+    // caminho base que será utilizado durante a
+    // resolução dos padrões passados (quanto aos
+    // arquivos/exclusões)
     basePath: '',
 
 
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+    // Frameworks a utilizar.
+    // lista de disponíveis:
+    // https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['mocha'],
 
 
-    // list of files / patterns to load in the browser
+    // lista os arquivos/padrões a serem utilizados para a utilização no Browser.
     files: [
         "../../node_modules/chai/chai.js",
         "calculadora.js",
@@ -21,47 +27,56 @@ module.exports = function(config) {
     ],
 
 
-    // list of files to exclude
+    // Lista de arquivos (podendo-se passar
+    // padroões) para serem excluidos (não
+    // utilizados)
     exclude: [
     ],
 
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    // Executam algum tipo de trabalho antes que
+    // os arquivos sejam servidos para o browser.
+    // veja os preprocessadores disponiveis em:
+    // https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
     },
 
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    // Reporter a ser utilizado para
+    // disponibilizar as informações. Ver os
+    // reporters em:  available reporters:
+    // https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress'],
 
 
-    // web server port
+    // Porta do servidos
     port: 9876,
 
 
-    // enable / disable colors in the output (reporters and logs)
+    // habilitar/desabilitar as cores no output do
+    // karma.
     colors: true,
 
 
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    // Nivel de Logging
+    // Valores disponíveis: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
 
-    // enable / disable watching file and executing tests whenever any file changes
+    // Habilita/desabilita o 'watching' de modo
+    // que sejam rodados os testes ao salvar
+    // qualquer arquivo observado.
     autoWatch: true,
 
 
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    // Browsers a serem inicializados para rodas
+    // os testes. available browser launchers:
+    // https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Firefox', 'Chrome', 'PhantomJS'],
 
 
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
+    // Rodas os testes apenas uma vez e sair (ou
+    // não).
     singleRun: false
   });
 };

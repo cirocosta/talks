@@ -1,6 +1,10 @@
-// jeito correto de fazer, porem meio complicado
-// para iniciantes
-
+/**
+ * Seguindo em partes o pregado pelo padrão UMD
+ * (Universal Module Definition) tornamos
+ * possível então exportar nosso módulo tanto
+ * para os browsers quanto para o Node sem haver
+ * alteração no código.
+ */
 (function (root, factory) {
 	if (typeof exports === 'object')
 		module.exports = factory({});
@@ -8,8 +12,10 @@
 		root.Calc = factory(window);
 })(this, function (window) {
 
-	// nossa construcao igual à anterior
-
+  /**
+   * Mantemos nosso constructor e as definicoes
+   * de métodos exatamente como nos anteriores.
+   */
 	function Calc () {}
 
 	Calc.prototype.soma = function(a, b) {
@@ -22,10 +28,10 @@
 		}, 500);
 	};
 
-	// como anteriormente exportavamos algo, agora
-	// estaremos exportando pro module.exports caso
-	// seja nodeJs, pro escopo global caso seja
-	// browser.
+  // como anteriormente exportavamos algo, agora
+  // estaremos exportando pro module.exports caso
+  // seja nodeJs, pro escopo global caso seja
+  // browser.
 
 	return Calc;
 });

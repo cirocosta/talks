@@ -1,6 +1,18 @@
+/**
+ * Como estamos rodando os testes no browser e
+ * não queremos alterar nossa estrutura (isto é,
+ * continuar rodando também no NodeJS), devemos
+ * fazer algumas checagens antes de iniciarmos o
+ * teste.
+ * @type {[type]}
+ */
 var Calc = Calc || {};
 var expect = expect || {};
 
+/**
+ * Dependendo do ambiente (browser ou Node)
+ * tomamos determinadas decisões.
+ */
 if (typeof exports === 'object') {
 	expect = require('chai').expect;
 	Calc = require('./calculadora');
@@ -8,6 +20,11 @@ if (typeof exports === 'object') {
 	expect = chai.expect;
 }
 
+
+/**
+ * Feitas as checagens de ambiente, mantemos os
+ * testes como estavam.
+ */
 describe('Calc', function() {
 
 	var calculadora;

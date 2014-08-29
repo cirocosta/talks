@@ -1,5 +1,6 @@
-// jeito correto de fazer, porem meio complicado
-// para iniciantes
+/**
+ * Sem alterações aqui
+ */
 
 (function (root, factory) {
 	if (typeof exports === 'object')
@@ -7,8 +8,6 @@
 	else
 		root.Calc = factory(window);
 })(this, function (window) {
-
-	// nossa construcao igual à anterior
 
 	function Calc () {}
 
@@ -21,11 +20,6 @@
 			callback(null, a*b);
 		}, 500);
 	};
-
-	// como anteriormente exportavamos algo, agora
-	// estaremos exportando pro module.exports caso
-	// seja nodeJs, pro escopo global caso seja
-	// browser.
 
 	return Calc;
 });

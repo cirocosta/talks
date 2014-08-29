@@ -4,6 +4,11 @@
 	<link rel="stylesheet" href="../../node_modules/mocha/mocha.css">
 </head>
 <body>
+  <!--
+     Arquivo básico para rodas os testes que
+     fizemos para o Node e Browser, no Browser
+     :)
+  -->
 
 	<div id="mocha"></div>
 
@@ -14,14 +19,9 @@
 	<script src="test-calculadora.js"></script>
 	<script>
 
-    var UA = navigator.usarAgent || 'No-User-Agent';
 		mocha.checkLeaks();
 		mocha.globals(['Calc']);
-		var runner = mocha.run();
-
-    runner.on('test end', function (test) {
-      console.log(runner.stats);
-    });
+		mocha.run();
 
 	</script>
 </body>
