@@ -1,7 +1,7 @@
 {
   "name": "nodebr-streams-and-tests",
   "version": "0.0.0",
-  "description": "",
+  "description": "Base do talk sobre testes, NodeBR",
   "main": "index.js",
   "scripts": {
     "test": "gulp test --headless"
@@ -11,7 +11,7 @@
     "url": "https://github.com/cirocosta/nodebr-streams-and-tests.git"
   },
   "author": "Ciro S. Costa <ciro9758@gmail.com> (http://www.cirocosta.com/)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/cirocosta/nodebr-streams-and-tests/issues"
   },
