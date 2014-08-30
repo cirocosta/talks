@@ -1,101 +1,126 @@
 # Testing for the great web!
 
-## Blá Blá Blá
-
-### Introdução - Javascript Rules!
-
+### Introdução
 
 Gostaria de dar um pouco de contexto do porquê que eu considero válido apresentar uma palestra sobre Testes automatizados em um meetup 'for dummies', como foi entitulado.
 
-É .. primeiramente, eu sou o Ciro, Ciro Costa, essa é a minha segunda palestra, trabalhei um tempo no Apontador com Node, bastante javascript, agora tenho me dedicado praticamente apenas a projetos abertos e estudos da faculdade.
+#### 1 - Ciro Costa
 
-Há alguns meses eu e alguns colegas de faculdade a gente se envolveu com um projeto realmente animal: construir uma Pipetadora Automática, com vários patamares e uma interface amigável. Aí então chego ao ponto do contexto de querer fazer uma palestra sobre testes: Tenho me infiltrado muito então nesses projetos multidisciplinares, incluindo galera de Química, Mecânica e outras áreas bastante distantes de computação.
+É .. primeiramente, eu sou o Ciro, Ciro Costa, essa é a minha segunda palestra, estou bastante nervoso por sinal ahahha, trabalhei um tempo no Apontador (site de busca de Locais, alguns devem conhecer) mexendo com Node, bastante javascript, agora tenho me dedicado praticamente apenas a projetos abertos e estudos da faculdade.
 
-E aí vem o lance: a maioria já programou, ou programa, alguns outros conhecidos mesmo, já programaram bastante mas nunca se realmente interessaram em prover testes automatizados em seus projetos, mesmo em projetos bastante interessantes e de complexidade alta. E isso me faz lembrar de mim mesmo, que quando comecei a mexer com web e entrei em contato com Django (que é, a grosso modo, o similar do Rails para Python) eu pensava que testar era algo pra profissionais e isso não era pra ser feito por mim. Me lembro que na época havia inclusive discussões quanto a colocar ou não já no tutorial introdutório a seção sobre testes, o que pra mim não fazia sentido algum.
+Há alguns meses eu e alguns colegas de faculdade a gente se envolveu com um projeto realmente animal:
+
+#### 2 - Pipetadora, 3 - Pipetadora Video
+
+construir uma Pipetadora Automática, com vários patamares e uma interface amigável, indo bastante ao contrário do que realmente existe (este é um dos protótipos que a gente fez).
+
+Aí então chego ao que eu comecei dizendo sobre o contexto de querer fazer uma palestra sobre testes: Tenho me infiltrado muito então nesses projetos multidisciplinares, incluindo galera de Química, Mecânica e outras áreas bastante distantes de computação.
+
+
+E aí vem o lance: a maioria já programou, ou programa, alguns outros conhecidos mesmo, já programaram bastante mas nunca se realmente interessaram em prover testes automatizados em seus projetos, mesmo em projetos bastante interessantes e de complexidade alta.
+
+E isso me faz lembrar de mim mesmo, que quando comecei a mexer com web e entrei em contato com Django (que é, a grosso modo, o similar do Rails para Python) eu pensava que testar era algo pra profissionais e isso não era pra ser feito por mim. Me lembro que na época havia inclusive discussões quanto a colocar ou não já no tutorial introdutório a seção sobre testes, o que pra mim não fazia sentido algum.
+
 
 Mas parece que as coisas vem mudando bastante. Para a pipetadora eu decidi usar AngularJS para me forçar a entrar nesse mundo de Frameworks e entender direito como as coisas andam. E foi muito interessante porquê o Angular por si só já tem em seus princípios a testabilidade, sendo então desde o princípio mostrado como se testam as coisas nele.
 
-Quem nunca testou pode agora estar bastante confuso, pensando que talvez isso seja algo bom, talvez difícil, talvez chato.
+#### 4 - Mas Porque?
 
-A primeira vez que eu escrevi um Teste deve ter sido bastante parecida com a de muita gente: já tinha um projeto que estava ficando grande e díficil de manter, resolvia um bug e criava outros dois, o que cria uma situação de muita raiva e pouca produtividade.
+Falei de teste ... teste. .. talvez quem nunca testou pode agora estar bastante confuso, pensando que talvez isso seja algo bom, talvez difícil, não sei.
 
-#### Javascript ... Liberdade .. Problemas
+
+Mas, porquê eu comecei a me interessar por isso? Talvez você, que nunca testou, possa então se identificar e começar a testar.
+
+Há um tempo atrás eu tentei ter uma startup, a gente conseguiu alguns clientes e tal, o projeto já estava ficando bastante grande e díficil de manter,
+
+#### 5 - Memes Bug
+
+resolvia um bug e criava outros dois sem saber (quem nunca?), o que cria uma situação de muita raiva e pouca produtividade.
+
+#### 6 Javascript ... Liberdade .. Problemas
 
 Esses problemas de bugs que aparecem do nada são ainda mais facilitados em linguagens bastante dinâmicas como Javascript.
 
 
 Javascript é uma linguagem de alto nível, excelente para scripiting (assim como diz em seu próprio nome), o que também nos torna muito produtivos, podendo criar várias coisas rapidamente, o que é notável especialmente no ínicio de um projeto. Já que a linguagem tem essa natureza extremamente dinâmica, isso, faz com que a gente enfrente grandes problemas ao construir projetos maiores. Isto ocorre ainda mais na Web, onde Recorrentemente percebemos várias diferenças entre implementações por parte dos navegadores - ainda mais quando isto se relaciona ao DOM. Mesmo fora do contexto puramente web, que é o caso dessa conferẽncia de hoje - explorar também o conetxto não-web - javascript não tem, por si só, várias das 'tools' nativas que diminuiriam erros, tais como static typings, erros de compilação e acesso indevido, entre vários outros problemas. O bom é que hoje em dia temos ferramentas para lidar com isso e boas práticas também.
 
+#### 7 - Esforços
+
 Várias sao as formas para tentarmos melhorar o ecosistema de desenvolvimento web:
 -	Padrões (W3C, TC39)
--	bibliotecas (jQuery, DOJO, YUI)
+-	bibliotecas (jQuery, DOJO, YUI - tiiinha)
 -	Frameworks (Angular, Ember ...)
 -	Transpillers
 - TESTES!
 
-Mas, porquê testes de fato melhoram o desenvolvimento?
+Mas, bom, ok, dei um contexto de como eu comecei, tentando situar um pouco do problema. Mas porquê testes de fato melhoram o desenvolvimento? No que vou ficar melhor do que se não testar?
+
+#### 8-  O que são testes?
+
+Ah sim, Antes de um porquê, o que é um teste?
+
+Eu procurei no wikipedia, já que era algo que eu particularmente não acho fácil definir, é uma daquelas coisas que você sabe o que é mais não é fácil dizer claramente ...
+
+> Compara o estado e comportamento do produto contra Oráculos
+
+Achei então bastante interessante ... oráculo ... fiquei pensando e faz todo o sentido porquê trata-se de 'alguma coisa', separada da 'treta principal --> código' que tem um conjunto de respostas para tudo (para todo e qualquer método ele tem uma resposta correta daquilo, ele sabe o que é esperado) ele contém a resposta final e divina --> em um projeto se seu teste não passar, é muito bom que tenha uma explicação convincente ou seu pull request provavelmente não terá chance de ser aceito.
 
 
-#### O que são testes?
+#### 9-  Porquê testar?
 
-> Testing can never completely identify all the defects within software.[3] Instead, it furnishes a criticism or comparison that compares the state and behavior of the product against oracles—principles or mechanisms by which someone might recognize a problem. These oracles may include (but are not limited to) specifications, contracts,[4] comparable products, past versions of the same product, inferences about intended or expected purpose, user or customer expectations, relevant standards, applicable laws, or other criteria.
+* Feedback rápido:
+	* com testes automatizados temos o poder dos feedbacks imediatos. Se você introduziu um problema, rapidamente vai consertar e não vai propagar isso por todo o código (erros tendem a ser cumulativos quando não detectados rapidamente). Ao introduzir uma mudança na base de código consegue-se rodar no mesmo instante o teste que comprova que tal adição não 'estraga' o resto. Quanto mais confiança você consiga ter, mais pode ousar no código.
 
-#### Porquê testar?
+		* refatoramento seguro - dado que em um momento uma função tem seus testes passando, para o mesmo input e output nela e mantendo os testes, o que refatorarmos internamente deve fazer os testes continuarem passando. Com tais premissas conseguimos rapidamente remover código que não altera resposta (supondo que o teste cubra bem os casos). Em projetos abertos isso conta muito para a atração de novos colaboradores já que os mesmos podem ter certeza que não estão estragando o código do projeto (ninguém quer levar culpa).
 
-1. Menor Incerteza - prova-se que o código está "correto"
+* Menor Incerteza - prova-se que o código está "correto"
 
-	1.1 Assim como, na mão, depois de codarmos nós vamos à sua execução ver se ele está funcionando como deveria, com os testes automatizados nós temos isso (inclusive com nomeclatura muito parecida em BDD). TDD Realmente trata-se apenas de tornar esse processo automatizado.
+	* Assim como, na mão, depois de codarmos nós vamos à sua execução ver se ele está funcionando como deveria, com os testes automatizados nós temos isso (inclusive com nomeclatura muito parecida em BDD). TDD Realmente trata-se apenas de tornar esse processo automatizado.
 
-	1.1.1 ps: correto está entre aspas pois corretude pode variar em várias formas. Por exemplo um código pode gerar o output esperado mas não ser eficiente, o que levaria, em muitos casos, mostrar que isto o mesmo não está correto. É interessante notar que esse comportamento incorreto seria também detectável!
+	* ps: correto está entre aspas pois corretude pode variar em várias formas. Por exemplo um código pode gerar o output esperado mas não ser eficiente, o que levaria, em muitos casos, mostrar que isto o mesmo não está correto. É interessante notar que esse comportamento incorreto seria também detectável!
 
-2. evita-se regressões
 
-	2.1 Regression Bug - voltar a implementar um bug que já havia sido tratado no passado e então volta a ocorrer. Uma vez que temos testes automatizados rodando durante o desenvolvimento corremos muito menos este risco pois (3):
+* Melhores decisões de design -
 
-3. Feedback rápido:
+	* testar não trata-se unicamente de escrever testes, mas principalmente de produzir código testável. Isto leva a código 'loosely coupled' com dependencies explícitas. Mais do que isso, a prática do TDD leva a melhor 'Separation of Concerns' - diferentes partes do projeto terão diferentes custos, tais como networking, levando a diferentes Tipos de testes (o desenvolvedor precisa então conseguir tornar isto isolável). Somando isto tudo, um código testável segue melhor o Príncipio da responsabilidade Única. (Singleton sucks!)
 
-	3.1 com testes automatizados temos o poder dos feedbacks imediatos. Se você introduziu um problema, rapidamente vai consertar e não vai propagar isso por todo o código (erros tendem a ser cumulativos quando não detectados rapidamente). Ao introduzir uma mudança na base de código consegue-se rodar no mesmo instante o teste que comprova que tal adição não 'estraga' o resto. Quanto mais confiança você consiga ter, mais pode ousar no código. ![thiaguinho](http://imagem-thiaguinho.com)
 
-	3.2 refatoramento seguro - dado que em um momento uma função tem seus testes passando, para o mesmo input e output nela e mantendo os testes, o que refatorarmos internamente deve fazer os testes continuarem passando. Com tais premissas conseguimos rapidamente remover código que não altera resposta (supondo que o teste cubra bem os casos). Em projetos abertos isso conta muito para a atração de novos colaboradores já que os mesmos podem ter certeza que não estão estragando o código do projeto (ninguém quer levar culpa).
+* evita-se regressões
+	* Regression Bug - voltar a implementar um bug que já havia sido tratado no passado e então volta a ocorrer. Uma vez que temos testes automatizados rodando durante o desenvolvimento corremos muito menos este risco pois (3):
 
-4. testes geram documentação -
 
-	4.1 um teste bem escrito conta uma história. Uma história sobre o uso do código. Melhor ainda que documentação, a documentação por testes sempre está atualizada.
+* testes geram documentação
+	* um teste bem escrito conta uma história. Uma história sobre o uso do código. Melhor ainda que documentação, a documentação por testes sempre está atualizada.
 
-5. Melhores decisões de design -
-
-	5.1 testar não trata-se unicamente de escrever testes, mas principalmente de produzir código testável. Isto leva a código 'loosely coupled' com dependencies explícitas. Mais do que isso, a prática do TDD leva a melhor 'Separation of Concerns' - diferentes partes do projeto terão diferentes custos, tais como networking, levando a diferentes Tipos de testes (o desenvolvedor precisa então conseguir tornar isto isolável). Somando isto tudo, um código testável segue melhor o Príncipio da responsabilidade Única. (Singleton sucks!)
+#### 10 - Magia
 
 6. É [magia!](https://www.youtube.com/watch?v=uHoB0KzQGRg#t=2086)!
 
 
-### Ok, e o que o NodeJS tem a ver com isso?
+Apesar de estar passando um video de testes em Android, o legal é que com NodeJS, diferente do Android, conseguimos ter uma grande facilidade na configuração do ambiente e o modo de se obter os resultados dos testes.
 
-Com NodeJS conseguimos ter uma grande facilidade na configuração do ambiente e o modo de se obter os resultados dos testes. Para que se tenha imbutido em uma equipe a prática do TDD é **extremamente** necessário que todos se sintam confortáveis com o ambiente, isto é, que seja fácil de instalar onde ele já está acostumado e sejam mínimos os passos para se ter algo funcional.
+Para que se tenha imbutido em uma equipe a prática do TDD é **extremamente** necessário que todos se sintam confortáveis com o ambiente, isto é, que seja fácil de instalar onde ele já está acostumado e sejam mínimos os passos para se ter algo funcional. Trata-se realmente de uma cultara de testes. Não deixar só na mão de uma setor mas sim fazer com que todo mundo produza código testável e com testes.
 
-Além disso, é importante que seja fácil de instalar em qualquer lugar literalmente. Buildar projetos grandes e testar em uma grande gama de devices geralmente toma tempo e consome muitos recursos. (//TODO pegar estatísticas do keynote do GTAC 2013 sobre o Google) O aumento na gama de diferentes ambientes para se testar e buildar levou então ao uso de CI para isso. É necessário então que a configuração do mesmo seja fácil, de modo que encorage-se o uso de testes. //TODO formular melhor.
+Mais do que só testar localmente, com o NodeJS é muito fácil fazer com que os testes também rodem em servidores dedicados só pra isso, como Travis e outros.
 
-Testar o backend também é extremamente importante. Sua API deve estar retornando o esperado, os métodos então devem estar escrevendo na DB como deveriam, as queries funcionando ... etc. (Supondo o setUp e tearDown de conexão teste).
+#### 11 - Cool Stuff!
 
+Como geralmente talks sobre testes costumam ser cansativos e pouco divertidos, imaginei que seria divertido colocar alguma ação, então para mim não há nada mais interessante do que realmente mostrar código! O primeiro tutorial que eu vi sobre testes era sobre como criar uma Calculadora, que é o que todo mundo sabe como se faz uma e é bem intuitivo.
 
-## Cool Stuff!
+#### 12 - Mocha e Chai
 
-Como geralmente talks sobre testes costumam ser cansativos e pouco divertidos, imaginei que seria divertido colocar alguma ação:
+Para os testes em Node irei ilustrar primeiramente o Mocha, um framework de teste bastente conhecido e também simples. Foi mantido por muito tempo pelo TJ Holowaychuck, criador do que deve ser o mais famoso framework e acredito que maioria deve conhecer, o Express, cujos testes, naturalmente, são rodados pelo Mocha.
 
-### Passo 0 - Vamos Criar uma Calculadora!
+Há vários outros bastante conhecidos, tal como o Jasmine (quem curte Angular deve conhecer, JEST do Facebook - agora utilizado bastante com React) mas ainda assim sendo o Mocha o mais simples (em minha opiniao) para se trabalhar.
 
-Tenho um disclaimer a fazer ... na verdade programar é um "hobby" que por sinal levo bem a sério, minha área de estudo formal é a Atuária - muito disconhecida, estudamos risco financeiro --> muita matemática --> só poderia criar uma calculadora.
-
-
-Para os testes em Node irei ilustrar primeiramente o Mocha, um framework de teste bastente conhecido e também simples. Foi mantido por muito tempo pelo TJ Holowaychuck, criador do que deve ser o mais famoso framework e acredito que maioria deve conhecer, o Express, cujos testes, naturalmente, são rodados pelo Mocha. Há vários outros bastante conhecidos, tal como o Jasmine (quem curte Angular deve conhecer, JEST do Facebook - agora utilizado bastante com React) mas ainda assim sendo o Mocha o mais simples (em minha opiniao) para se trabalhar.
+A outra biblioteca fundamental que vou estar utilizando se trata do [Chai](http://chaijs.com/) que é uma biblioteca de asserção, isto é, vai nos dar os métodos que irão testar se nossas expectativas batem com o que é de fato obtido através de um método (irá criar nossos Oráculos). Estou utilizando essa em si por que ela nos dá grande verbosidade, fica muito próximo da linguagem natural a forma com que as asserções são feitas.
 
 Começando então com o código :smile:
 
-Nesse primeiro passou vo tentar falar linha a linha já que talvez seja um tanto quanto diferente para quem não está nada acostumado com testes.
+#### 12/1 - Passo 0
 
-Primeiro estou dando um `require` no [Chai](http://chaijs.com/) que se trata de uma biblioteca de asserção, isto é, vai nos dar os métodos que irão testar se nossas expectativas batem com o que é de fato obtido através de um método. Estou utilizando essa em si por que ela nos dá grande verbosidade, fica muito próximo da linguagem natural a forma com que as asserções são feitas.
+Há várias maneiras de se introduzir os testes no workflow de um grupo, alguns testam antes de fazer o código em si, outros depois ... eu gosto de iniciar pelos testes para ir pensando desde o início em uma interface simples e testável.
 
-Em seguida obtenho nossa Calculadora.
 
 O Mocha, assim como outros frameworks de testes trabalha com encapsulamento por meio dos `Describes`, cuja finalidade é deixar claro qual o escopo daquela do conjunto de testes que se está cobrindo, trata-se da Suite. O `it` então trata-se do teste em si, uma especificação (a chamada Spec) onde deve haver uma asserção (afirmação --- a palavra de fato existe). Vale lembrar que por se tratarem de funções quaisquer, qualquer código executável de javascript pode ser declarado alí.
 
@@ -103,7 +128,7 @@ Vamos então ver se o teste passa:
 
 ... FAIL
 
-Puxa, nosso teste falhou! Podemos ver no reporter então quais foram as especificações que falharam e no escopo de qual objeto isso ocorreu. Dessa forma a gente consegue detectar rapidamente onde esta a falha.
+É claro que não iria passar, nosso objeto Calc não está definido! Podemos ver no reporter então quais foram as especificações que falharam e no escopo de qual objeto isso ocorreu. Dessa forma a gente consegue detectar rapidamente onde esta a falha.
 
 Vamos então ver no código da calculadora o que pode ter ocorrido:
 
@@ -115,7 +140,7 @@ Como tinha falado sobre o feedback rápido, algo legal que o mocha já tem embut
 Tendo o teste passado, i.e, mostrando que nosso construtor está ok, podemos prosseguir com a adição de funcionalidades.
 
 
-### Passo 1 - Métodos na Calculadora
+#### 12/2 Passo 1 - Métodos na Calculadora
 
 Uma calculadora sem função alguma não serve para nada. Vamos então adicinar o método soma. Mais uma vez criei então um contexto, desta vez para o soma. Não se trata de algo necessário mais isso aumenta a organização dos testes, o que é algo importante à medida que se tem vários e identificar facilmente qual teste falhou trata-se de algo importante. Para o soma então poderíamos ter vários testes: se quando passamos somente um argumento ele levante uma exception, se passsando strings ele realmente parseia pra INT e aplica a soma, entre vários outros. Aqui testo apenas o mais intuitivo.
 
