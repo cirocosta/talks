@@ -97,7 +97,7 @@ Primeiro estou dando um `require` no [Chai](http://chaijs.com/) que se trata de 
 
 Em seguida obtenho nossa Calculadora.
 
-O Mocha, assim como outros frameworks de testes trabalha com encapsulamento por meio dos `Describes`, que expõe qual o escopo daquela suite - conjunto - de testes. O `it` então trata-se do teste em si, onde deve haver uma asserção (afirmação --- a palavra de fato existe). Vale lembrar que por se tratarem de funções quaisquer, qualquer código executável de javascript pode ser declarado alí.
+O Mocha, assim como outros frameworks de testes trabalha com encapsulamento por meio dos `Describes`, cuja finalidade é deixar claro qual o escopo daquela do conjunto de testes que se está cobrindo, trata-se da Suite. O `it` então trata-se do teste em si, uma especificação (a chamada Spec) onde deve haver uma asserção (afirmação --- a palavra de fato existe). Vale lembrar que por se tratarem de funções quaisquer, qualquer código executável de javascript pode ser declarado alí.
 
 Vamos então ver se o teste passa:
 

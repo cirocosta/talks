@@ -3,7 +3,7 @@
 var gulp = require('gulp');
 var glob = require('glob');
 var mocha = require('gulp-mocha');
-var protractor = require('gulp-protractor').protractor;
+var gp = require('gulp-protractor');
 var karma = require('karma').server;
 var path = require('path');
 
@@ -27,8 +27,13 @@ karmaConfs.forEach(function (name) {
 });
 
 gulp.task('test-protractor', function () {
+  gp.webdriver_update(function (code) {
+    if (code)
+      throw new Error('Error while updating WebDriver');
+  });
+
   return gulp.src(['./passos/5/spec.js'])
-    .pipe(protractor({
+    .pipe(gp.protractor({
       configFile: './passos/5/protractor.conf.js'
     }))
     .on('error', function (e) {

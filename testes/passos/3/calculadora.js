@@ -22,7 +22,7 @@
 		return a + b;
 	};
 
-	Calc.prototype.multiplica = function (a, b, callback) {
+	Calc.prototype.mult = function (a, b, callback) {
 		setTimeout(function () {
 			callback(null, a*b);
 		}, 500);

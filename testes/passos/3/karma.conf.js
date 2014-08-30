@@ -3,6 +3,8 @@
  * gerado pelo mesmo (karma init karma.conf.js)
  * porém com os comentários traduzidos e alguns
  * outros adicionados.
+ *
+ * Para rodar o teste basta executar: `karma start karma.conf.js`
  */
 module.exports = function(config) {
   config.set({

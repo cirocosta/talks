@@ -1,10 +1,7 @@
 jQuery(function () {
+  var calc = new CalcClient();
   var $calc = jQuery('#calculadora');
   var $tela = jQuery('.tela input', $calc);
-
-  jQuery('.tecla.igual', $calc).click(function (e) {
-    getResult($tela.val().split('*'));
-  });
 
   jQuery('.tecla', $calc).click(function (e) {
     var tipo = tecla = $(this).text();
@@ -28,7 +25,10 @@ jQuery(function () {
         break;
 
       case '=':
-        console.log("igual");
+        var values = $tela.val().split('*');
+        calc.getResult({a: values[0], b: values[1]}, function (resp) {
+          $tela.val(resp.data);
+        });
         break;
     }
   });

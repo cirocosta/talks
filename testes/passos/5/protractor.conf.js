@@ -15,17 +15,6 @@ exports.config = {
    * utilizado até agora, ficamos com o Mocha.
    */
   framework: 'mocha',
-
-  /**
-   * Use `seleniumAddress` for faster startup;
-   * run `./node_modules/.bin/webdriver-manager
-   * start` to launch the Selenium server. Use
-   * `seleniumPort` to let Protractor manage its
-   * own Selenium server instance (using the
-   * server JAR in its default location).
-   */
-  seleniumAddress: 'http://localhost:4444/wd/hub',
-
   /**
    * Caminho (glob) para os specs de E2E
    * relativos ao local deste arquivo de
@@ -47,7 +36,8 @@ exports.config = {
           'incognito',
           'disable-extensions',
           'start-maximized',
-          'enable-crash-reporter-for-testing'
+          'enable-crash-reporter-for-testing',
+          'disable-web-security'
         ]
     },
     'loggingPrefs': {

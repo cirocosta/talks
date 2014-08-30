@@ -74,7 +74,7 @@ describe('CalcClient', function() {
       // obtemos, do argumento passado para o
       // jQuery.ajax, o campo URL.
       var obtido = jQuery.ajax.getCall(0).args[0].url;
-      var esperado = '/multiplica';
+      var esperado = 'http://localhost:3000/multiplica';
 
       // verificamos se bate com o que esperávamos
       // :)  Poderiamos então testar se os dados
