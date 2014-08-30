@@ -156,12 +156,10 @@ Para a primeira basta utilizar o `done`, função passada como callback do `it`q
 
 
 Para a segunda podemos utilizar uma biblioteca feita para isso: SinonJS. O SinonJS busca introduzir três conceitos à testes: spying, stubbing, mocking.
-//TODO continuar nisso
 
 
 ### Passo 3 - Joga os testes e a lib para o Browser
 
-//TODO comentar algo sobre browserify ?
 
 Falar que existe um pattern (UMD) para tornar as coisas mais 'universal', porém não entrar em detalhes.
 
@@ -210,20 +208,3 @@ $ ./node_modules/protractor/webdriver-manager start
 
 ### Conclusão
 
-### Call to Action
-
-- como desde o começo tento introduzir uma prática nova, tenho que fazer uma chamada para um ação --> começar a testar com node.
-
-> Assume that your presentation has delivered the information needed by the audience to move them in a direction and make your call to action definitive and instructional.
-
-
-## Blá BLá
-
-### Karma - testando em browsers de verdade
-
-Há muitos problemas entre browsers diferentes e, como esperado, o problema de testes é exatamente capturar os erros. Precisamos então de um ambiente que facilite o teste em diferentes browsers de maneira rápida, de modo que possamos aproveitar os features de testes rápidos como descrito acima.
-
-
-### Testes de vários tipos
-
-Testes tomam vários 'levels'. Desde um muito focado (os testes unitários) até testes que testam exatamente a interação do usuário (end2end tests).
