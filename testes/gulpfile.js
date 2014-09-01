@@ -1,15 +1,19 @@
 'use strict';
 
-var gulp = require('gulp');
-var glob = require('glob');
-var mocha = require('gulp-mocha');
-var gp = require('gulp-protractor');
-var karma = require('karma').server;
-var path = require('path');
+var gulp = require('gulp')
+  , glob = require('glob')
+  , mocha = require('gulp-mocha')
+  , gp = require('gulp-protractor')
+  , karma = require('karma').server
+  , path = require('path')
 
-var karmaConfs = glob.sync('passos/**/karma.conf.js');
-var protractorConfs = glob.sync('passos/**/protractor.conf.js');
+  , karmaConfs = glob.sync('passos/**/karma.conf.js')
+  , protractorConfs = glob.sync('passos/**/protractor.conf.js');
 
+
+/**
+ * Obtencao dos paths das configs do karma
+ */
 
 karmaConfs.forEach(function (name) {
   var cfg = {
@@ -26,6 +30,12 @@ karmaConfs.forEach(function (name) {
   });
 });
 
+/**
+ * Tasks
+ */
+
+// TODO(ciro) - melhorar a parte de update do
+// protractor
 gulp.task('test-protractor', function () {
   gp.webdriver_update(function (code) {
     if (code)

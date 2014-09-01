@@ -1,6 +1,7 @@
 /* global module:false */
 module.exports = function(grunt) {
 	var port = grunt.option('port') || 8000;
+
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -36,16 +37,7 @@ module.exports = function(grunt) {
 		sass: {
 			main: {
 				files: {
-					'css/theme/default.css': 'css/theme/source/default.scss',
-          'css/theme/ciro.css': 'css/theme/source/ciro.scss',
-					'css/theme/beige.css': 'css/theme/source/beige.scss',
-					'css/theme/night.css': 'css/theme/source/night.scss',
-					'css/theme/serif.css': 'css/theme/source/serif.scss',
-					'css/theme/simple.css': 'css/theme/source/simple.scss',
-					'css/theme/sky.css': 'css/theme/source/sky.scss',
-					'css/theme/moon.css': 'css/theme/source/moon.scss',
-					'css/theme/solarized.css': 'css/theme/source/solarized.scss',
-					'css/theme/blood.css': 'css/theme/source/blood.scss'
+          'css/theme/ciro.css': 'css/theme/source/ciro.scss'
 				}
 			}
 		},
@@ -84,11 +76,12 @@ module.exports = function(grunt) {
 
 		zip: {
 			'reveal-js-presentation.zip': [
+        'README.md',
 				'index.html',
 				'css/**',
 				'js/**',
 				'lib/**',
-				'images/**',
+				'assets/**',
 				'plugin/**'
 			]
 		},

@@ -8,13 +8,18 @@ $ npm install
 
 de modo que todas as dependencias necessárias sejam baixadas.
 
+**Os passos mostrados na parte prática dos slides estão todos na pasta `talks/testes/passos`.**
+
+## Slides
+
+O conteúdo dos slides está todo na pasta `talks/testes/slides`.
 
 ## Testando
 
 Como todo o conteúdo desta palestra, sobre testes automatizados, é testável, para rodar todos de uma vez basta executar a task de testes do `gulpfile.js` presente:
 
 ```sh
-$ gulp test
+$ npm test
 ```
 
 ## Extra
