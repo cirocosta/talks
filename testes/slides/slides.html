@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <title>Testando com NodeJS</title>
+  <meta name="description" content="Um talk introdutorio sobre como testar com NodeJS">
+  <meta name="author" content="Ciro S. Costa">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- main:css -->
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/ciro.css" id="theme">
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+  <!-- /main:css -->
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Introducao -->
+
+      <section data-background="#2C3E50">
+        <h1>Testando</h1>
+        <h1>com</h1>
+        <h1>NodeJS</h1>
+
+        <p style="text-align: right"><a href="http://www.meetup.com/NodeBR-Sao-Paulo/events/201165962/">NodeBR - 30 Agosto, 2014</a></p>
+      </section>
+
+      <section>
+        <div class="left-block" style="background: url(assets/min/ciro-99jobs.jpg) no-repeat; background-size: 100%">
+        </div>
+        <div class="row">
+          <div class="left-content"></div>
+          <div class="right-content">
+            <h2>Ciro Costa</h2>
+            <a href="https://github.com/cirocosta">github.com/cirocosta</a>
+            <a href="https://twitter.com/cirowrc">@cirowrc</a>
+          </div>
+        </div>
+      </section>
+
+      <section data-background="#F0F0F0">
+        <img class="stretch" src="assets/min/pipetadora.jpg" alt="Pipetadora">
+      </section>
+
+
+      <section>
+        <video class="stretch" data-autoplay src="assets/pipetadora.mp4"></video>
+      </section>
+
+      <section>
+        <h1>Mas porquê?</h1>
+      </section>
+
+      <section data-background="assets/min/meme-bugs.jpg">
+      </section>
+
+      <section data-background="#3498DB">
+        <h1 class="fragment fade-in">Javascript</h1>
+        <br>
+        <h1 class="fragment fade-in">Liberdade</h1>
+        <br>
+        <h1 class="fragment fade-in">Problemas</h1>
+      </section>
+
+      <section>
+        <h1>Esforços</h1>
+        <h1>Para</h1>
+        <h1>Melhorar</h1>
+
+        <h3>Padrões, Bibliotecas, <strong class="fragment highlight-green">Testes</strong></h3>
+      </section>
+
+      <section data-background="#F0F0F0">
+        <h1 style="color: #3498DB">Teste,</h1>
+        <blockquote>
+          "<strong style="color: #3498DB">Compara</strong> o estado e comportamento do produto contra <strong style="color: #3498DB">oráculos</strong>"
+        </blockquote>
+      </section>
+
+      <section>
+
+        <h1>Para quê?</h1><br>
+
+        <div class="left-block color-belizehole">
+        </div>
+        <div class="row">
+          <div class="left-content fragment grow">
+            <ul>
+              <li><h3>Feedback</h3></li>
+              <li><h3>Design</h3></li>
+              <li><h3>Docs</h3></li>
+            </ul>
+          </div>
+          <div class="right-content fragment shrink">
+            <ul>
+              <li><h3>Incerteza</h3></li>
+              <li><h3>Regressões</h3></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <video class="stretch" data-autoplay src="assets/android-espresso.mp4" loop></video>
+      </section>
+
+      <section data-state="slide-calc">
+        <div class="calculadora">
+          <div class="arrow"></div>
+          <div class="tela">
+            <textarea>mao na Massa!</textarea>
+          </div>
+
+          <div class="keypad">
+            <ul class="linha">
+              <li><button class="esp1">ON</button></li>
+              <li><button class="esp2">+</button></li>
+              <li><button class="esp2">*</button></li>
+              <li><button class="esp2">/</button></li>
+            </ul>
+            <ul class="linha">
+              <li><button class="esp1">=</button></li>
+              <li><button>7</button></li>
+              <li><button>8</button></li>
+              <li><button>9</button></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pratical -->
+
+      <section>
+        <section>
+          <h2>Base: <strong>Mocha</strong> + <strong>Chai</strong></h2>
+          <ul class="list-inline">
+            <li><img src="assets/min/logo-mocha.png" alt="Logo Mocha"></li>
+            <li><img src="assets/min/logo-chai.png" width="300" alt="Logo Chai"></li>
+          </ul>
+        </section>
+
+        <!-- Passo 0 -->
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row">
+            <div class="left-content small">
+              <p class="fragment highlight-red">Criamos o Teste</p>
+            </div>
+            <div class="right-content big">
+              <pre><code class="javascript">describe('Calc', function() {
+  var calculadora;
+
+  it('é instanciavel', function() {
+    calc = new Calc();
+    expect(!!calculadora)
+      .to.equal(true);
+  });
+});
+              </code></pre>
+            </div>
+          </div>
+          <br>
+
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Criamos seu construtor</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+function Calc () {}
+
+module.exports = Calc;
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Passo 1 -->
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row">
+            <div class="left-content small">
+              <p>Teste Soma</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+describe('.soma', function () {
+  it('deveria somar', function() {
+    var obtido = calc.soma(5, 2);
+    var esperado = 7;
+
+    expect(obtido)
+      .to.equal(esperado);
+  });
+});
+              </code></pre>
+            </div>
+          </div>
+          <br>
+
+          <div class="row fragment fade-in">
+            <div class="left-content small">Func. Soma</div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+Calc.soma = function(a, b) {
+  return a + b;
+};
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Passo 2 -->
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row">
+            <div class="left-content small">Func. Mult Async</div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+Calc.mult = function (a, b, cb) {
+  setTimeout(function () {
+    cb(null, a * b);
+  }, 500);
+};
+
+              </code></pre>
+            </div>
+          </div>
+          <br>
+
+          <div class="row fragment fade-in">
+            <div class="left-content small">Teste Mult Async</div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+it('deve mult', function(fim){
+  var esperado = 6;
+
+  calc.mult(2, 3, function(e, res){
+    if (e) fim(e);
+
+    expect(res)
+      .to.equal(esperado);
+    fim();
+  });
+});
+              </code></pre>
+            </div>
+          </div>
+        </section>
+      </section>
+
+
+      <!-- Passo 3 -->
+
+      <section>
+
+        <section>
+          <h2>E nos browsers?</h2>
+          <img src="assets/min/logo-mocha.png" alt="Logo Mocha">
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row">
+            <div class="left-content small">
+              <p>mocha-index.html</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="html fragment shrink">
+&lt;div id="mocha"&gt;&lt;/div&gt;
+
+&lt;script src="calculadora.js"&gt;&lt;/script&gt;
+&lt;script src="chai.js"&gt;&lt;/script&gt;
+&lt;script src="mocha.js"&gt;&lt;/script&gt;
+&lt;script&gt;mocha.setup('bdd');&lt;/script&gt;
+&lt;script src="test-calculadora.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  mocha.checkLeaks();
+  mocha.globals(['Calc']);
+  mocha.run();
+&lt;/script&gt;
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <img src="assets/min/mocha-html-test.png" alt="Teste HTML Mocha">
+        </section>
+
+        <section>
+          <h2>Automatizar --> <strong>Karma</strong></h2>
+          <img src="assets/min/logo-karma.png" alt="Logo Karma">
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row">
+            <div class="left-content small">
+              <p>Config Karma</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+config.set({
+  frameworks: ['mocha'],
+
+  files: [
+      "chai.js",
+      "calculadora.js",
+      "test-*.js"
+  ],
+
+  browsers: ['Chrome',
+             'Firefox',
+             'PhantomJS'],
+});
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <img src="assets/min/karma-results.png" width="100%" alt="Teste HTML Mocha">
+        </section>
+      </section>
+
+
+      <!-- Passo 4 -->
+
+      <section>
+        <section>
+          <h2>jQuery --> <strong>SinonJS</strong></h2>
+          <img src="assets/min/logo-sinonjs.jpg" alt="Logo SinonJS">
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row">
+            <div class="left-content small">
+              <p>Calculadora Client</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+Client.get = function(data){
+  return $.ajax({
+    type: 'POST',
+    dataType: 'json',
+    url: '/multiplica',
+    data: data
+  });
+};
+              </code></pre>
+            </div>
+          </div>
+
+        </section>
+
+        <section>
+          <h1>Como testar o <code style="color:#E6E6A4;">$.ajax</code> sem servidor?</h1>
+        </section>
+
+
+        <section data-background="assets/min/007.jpg">
+          <h1 class="fragment fade-in" style="text-shadow: 4px 4px 10px black !important">Sinon SPY!</h1>
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row">
+            <div class="left-content small">
+              <p><em>Antes:</em> Prepara o Spy</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+beforeEach(function () {
+  sinon.spy($, 'ajax');
+});
+              </code></pre>
+            </div>
+          </div>
+          <br><br>
+
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p><em>Depois:</em> Limpa o Spy</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+afterEach(function () {
+  $.ajax.restore();
+});
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row">
+            <div class="left-content small">
+              <p>Chamou?</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+it('deve chamar ajax', function(){
+  calc.get({});
+
+  expect(jQuery.ajax.called)
+    .to.equal(true);
+});
+              </code></pre>
+            </div>
+          </div>
+          <br>
+
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>e o URL?</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+it('deve acertar url', function(){
+  calc.getResult({});
+
+  var esperado = '/multiplica';
+  var obtido = $.ajax.getCall(0)
+                  .args[0].url;
+
+  expect(obtido).to.equal(esperado)
+});
+              </code></pre>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Passo 5 -->
+
+      <section>
+        <section>
+          <h2>E2E --> Protractor</h2>
+          <img src="assets/min/logo-protractor.png" style="border: 0px none; background: #FFF; width: 100%;" alt="Logo Protractor"> </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Config Protractor</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+exports.config = {
+  framework: 'mocha',
+  specs: ['spec.js',],
+  capabilities: {
+    'browserName': 'chrome',
+    'chromeOptions': {
+        'args': [
+          'incognito',
+          'disable-extensions',
+          'enable-crash-reporter-for-testing'
+        ]
+    }
+  }
+};
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h1>E o teste em si?</h1>
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Prepara e testa Titulo</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+beforeEach() ->
+  browser.get('/passos/5');
+  browser.ignoreSynchronization = true;
+
+it('deve acertar titulo') ->
+  expect(browser.getTitle())
+      .to.eventually.equal('Titulo');
+              </code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section data-background="#3F3F3F">
+          <div class="left-block color-midnightblue small"></div>
+          <div class="row fragment fade-in">
+            <div class="left-content small">
+              <p>Emite cliques e verifica</p>
+            </div>
+            <div class="right-content big">
+              <pre><code data-trim class="javascript">
+it('clica e numero aparece') ->
+  var tecla1 =
+    element(by.css('SELETOR1'));
+  var tecla2 =
+    element(by.css('SELETOR2'));
+  var teclaMult =
+    element(by.css('SELETOR_MULT'));
+
+  tecla1.click(); teclaMult.click();
+  tecla2.click();
+
+  expect(element(by.css('SELETOR_TELA'))
+      .getAttribute('value'))
+        .to.eventually.equal('1*2');
+  });
+              </code></pre>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2><strong>Todo</strong> o código aqui é testável!</h2>
+          <img src="assets/min/logo-gulp.png" style="border: 0; padding: 1% 10%;" alt="Logo do GulpJS">
+        </section>
+
+        <section>
+          <h2>Vocês também podem contribuir!</h2>
+
+          <a id="link-contribuir">bit.ly/nodebr-testes</a>
+        </section>
+      </section>
+
+      <!-- Conclusion -->
+
+      <section data-background="#F0F0F0">
+        <h1 style="color: #3498DB">Obrigado!</h1>
+        <br><br>
+        <p><a href="https://github.com/cirocosta/talks">github.com/<strong style="color: #3498DB">cirocosta</strong>/talks</a></p>
+        <p><a href="https://twitter.com/cirowrc">@cirowrc</a></p>
+      </section>
+
+
+    </div>
+  </div>
+
+  <!-- main:js -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.min.js"></script>
+  <script src="js/reveal-config.js"></script>
+  <script src="js/type-in-cal.js"></script>
+  <!-- /main:js -->
+</body>
+</html>
