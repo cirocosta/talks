@@ -1,0 +1,148 @@
+// MIXINS and SETTINGS
+@import "../template/mixins";
+@import "../template/settings";
+
+// COLORS
+$colorWetAsphalt: #34495E;
+$colorMidnightBlue: #2C3E50;
+
+$colorClouds: #ECF0F1;
+$colorBaseCalculadora: #E3E6E7;
+$colorSilver: darken($colorBaseCalculadora, 10%);
+
+$colorConcrete: #95A5A6;
+$colorAsbestos: #7F8C8D;
+
+$colorEmerald: #2ECC71;
+$colorNephritis: #27AE60;
+
+$colorTurquoise: #1ABC9C;
+$colorGreenSea: #16A085;
+
+$colorPeterDriver: #3498DB;
+$colorBelizeHole: #2980B9;
+
+$colorWisteria: #8E44AD;
+$colorAmethyst: #9B59B6;
+
+$colorOrangeButton: #E67E22;
+
+
+// SETTINGS overwriting
+$headingFont: 'Helvetica', 'Helvetica Neue';
+$headingTextTransform: none;
+$headingTextShadow: none !important;
+$backgroundColor: $colorWetAsphalt;
+$linkColor: $colorBelizeHole;
+$linkColorHover: lighten( $linkColor, 20% );
+
+
+// General Overwrite
+.reveal {
+	font-weight: 900 !important;
+}
+
+blockquote {
+	color: #99B8CC;
+	font-size: 1.5em !important;
+	line-height: 1.1 !important;
+	width: 100% !important;
+}
+
+
+// Custom Classes
+.left-block {
+	&.color-belizehole {
+		background-color: $colorBelizeHole;
+	}
+
+	&.color-midnightblue {
+		background-color: $colorMidnightBlue;
+	}
+
+	width: 100%;
+	height: 450%;
+	position: absolute;
+	top: -160%;
+	left: -45%;
+	z-index: -1;
+
+	&.small {
+		width: 77%;
+	}
+}
+
+
+.list-inline {
+	li {
+		display: inline;
+		list-style-type: none;
+	}
+}
+
+.row {
+	.left-content {
+		width: 50%;
+		display: inline-block;
+		margin-right: 5%;
+		vertical-align: top;
+		text-align: right;
+
+		&.small {
+			width: 20%;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			text-align: right;
+		}
+	}
+
+	.right-content {
+		width: 40%;
+		display: inline-block;
+		text-align: left;
+
+		&.big {
+			width: 60%;
+		}
+
+		pre {
+			margin: 0;
+			box-shadow: none;
+			width: 120%;
+
+			code {
+				font-size: 1.6em;
+				width: inherit;
+				line-height: 1.3;
+				max-height: none;
+			}
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			text-align: left;
+		}
+	}
+}
+
+.arrow:before{
+	content: "";
+	position: absolute;
+	right: 7px;
+	top: 20px;
+	width: 0;
+	height: 0;
+	border-left: 20px solid $colorSilver;
+	border-right: 20px solid transparent;
+	border-top: 20px solid transparent;
+}
+
+
+// THEME Tempate
+@import "../template/theme";
