@@ -131,7 +131,8 @@
 	    var $__0=   computeSize(this.props.sizes, this.props.margins),width=$__0.width,height=$__0.height;
 	
 	    return (
-	      React.DOM.svg({width: width, height: height}, 
+	      React.DOM.svg({viewBox: "0 0 " + this.props.sizes.width + " " + this.props.sizes.height, 
+	           preserveAspectRatio: "xMidYMid"}, 
 	        this.props.children
 	      )
 	    );
@@ -154,22 +155,29 @@
 	
 	__webpack_require__(/*! ./Node.scss */ 8);
 	var React = __webpack_require__(/*! react */ 2);
+	var $__0=  __webpack_require__(/*! ../util */ 156),cx=$__0.cx;
 	
 	var Node = React.createClass({displayName: 'Node',
 	  props: {
 	    x: React.PropTypes.number.isRequired,
 	    y: React.PropTypes.number.isRequired,
 	    r: React.PropTypes.number.isRequired,
+	    active: React.PropTypes.bool
 	  },
 	
 	  render:function () {
 	    var translate = 'translate(' + this.props.x + ',' +
 	                                   this.props.y + ')';
 	
+	    var classes = cx({
+	      Node: true,
+	      active: this.props.active
+	    });
+	
 	    return (
-	      React.DOM.g({className: 'Node', transform: translate}, 
+	      React.DOM.g({className: classes, transform: translate}, 
 	        React.DOM.circle({r: this.props.r}), 
-	        React.DOM.text({style: {fillOpacity: '1'}}, this.props.name)
+	        React.DOM.text({style: {fillOpacity: '1'}, y: this.props.r * -1.5}, this.props.name)
 	      )
 	    );
 	  }
@@ -193,20 +201,26 @@
 	var treeData = [
 	  {
 	    "name": "Top Level",
+	    "id": "l1",
 	    "children": [
 	      {
 	        "name": "Level 2: A",
+	        "id": "l2-a",
+	        "active": true,
 	        "children": [
 	          {
 	            "name": "Son of A",
+	            "id": "l3-l2-a-a"
 	          },
 	          {
 	            "name": "Daughter of A",
+	            "id": "l3-l2-a-b"
 	          }
 	        ]
 	      },
 	      {
 	        "name": "Level 2: B",
+	        "id": "l2-b"
 	      }
 	    ]
 	  }
@@ -407,9 +421,11 @@
 
 	/** @jsx React.DOM */
 	
+	// require('./Tree.scss');
 	var React = __webpack_require__(/*! react */ 2);
 	var d3 = __webpack_require__(/*! d3 */ 33);
 	var Node = __webpack_require__(/*! ./Node.jsx */ 4);
+	var $__0=  __webpack_require__(/*! ../util */ 156),cx=$__0.cx;
 	
 	var Tree = React.createClass({displayName: 'Tree',
 	  propTypes: {
@@ -420,6 +436,10 @@
 	  },
 	
 	  render:function () {
+	    var classes = cx({
+	      Tree: true,
+	    });
+	
 	    var root = this.props.tree[0];
 	    var diagonal = d3.svg.diagonal()
 	                         .projection(function(d)  {return [d.y, d.x];});
@@ -434,13 +454,13 @@
 	    nodes.forEach(function(d)  {d.y = d.depth * 180;});
 	
 	    var nodeElems = nodes.map(function(node, i) 
-	      {return Node({x: node.y, y: node.x, name: node.name, r: 10, key: i});});
+	      {return Node({x: node.y, y: node.x, name: node.name, r: 10, key: i, active: node.active});});
 	
 	    var linkElems = links.map(function(link, i) 
 	      {return React.DOM.path({key: i, className: 'Link', d: diagonal(link, i)});});
 	
 	    return (
-	      React.DOM.g({transform: gTransf}, 
+	      React.DOM.g({className: classes, transform: gTransf}, 
 	        linkElems, 
 	        nodeElems
 	      )
@@ -485,7 +505,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(/*! ./~/css-loader/cssToString.js */ 94)();
-	exports.push([module.id, ".Node{cursor:pointer}.Node circle{fill:#fff;stroke:steelblue;stroke-width:3px}.Node text{font:12px sans-serif}", ""]);
+	exports.push([module.id, ".Node{cursor:pointer;opacity:0.4}.Node text{font-size:12px;transition:font-size 0.1s ease}.Node circle{fill:#fff;stroke:steelblue;stroke-width:3px;transform:scale(1);transition:transform 0.1s ease}.Node.active{opacity:1}.Node.active circle{fill:yellow;stroke:yellow;transform:scale(3)}.Node.active text{font-size:36px}", ""]);
 
 /***/ },
 /* 10 */
@@ -29303,6 +29323,38 @@
 	module.exports = toArray;
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 32)))
+
+/***/ },
+/* 156 */
+/*!***************************!*\
+  !*** ./src/util/index.js ***!
+  \***************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  cx: __webpack_require__(/*! ./cx */ 157)
+	};
+
+
+/***/ },
+/* 157 */
+/*!************************!*\
+  !*** ./src/util/cx.js ***!
+  \************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Creates a string representing css classes
+	 * given an object literal.
+	 * @type {string}
+	 */
+	module.exports = function(classes)  {
+	  return typeof classes !== 'object' ?
+	    Array.prototype.join.call(arguments, ' ') :
+	    Object.keys(classes).filter(function(className)  {return classes[className];}).join(' ');
+	};
+	
+
 
 /***/ }
 /******/ ])

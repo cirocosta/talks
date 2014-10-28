@@ -6,20 +6,26 @@ var React = require('react');
 var treeData = [
   {
     "name": "Top Level",
+    "id": "l1",
     "children": [
       {
         "name": "Level 2: A",
+        "id": "l2-a",
+        "active": true,
         "children": [
           {
             "name": "Son of A",
+            "id": "l3-l2-a-a"
           },
           {
             "name": "Daughter of A",
+            "id": "l3-l2-a-b"
           }
         ]
       },
       {
         "name": "Level 2: B",
+        "id": "l2-b"
       }
     ]
   }

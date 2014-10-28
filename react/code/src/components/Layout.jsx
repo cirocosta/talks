@@ -33,7 +33,8 @@ var Layout = React.createClass({
     var {width, height} = computeSize(this.props.sizes, this.props.margins);
 
     return (
-      <svg width={width} height={height}>
+      <svg viewBox={"0 0 " + this.props.sizes.width + " " + this.props.sizes.height}
+           preserveAspectRatio="xMidYMid">
         {this.props.children}
       </svg>
     );
