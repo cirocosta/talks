@@ -32,6 +32,7 @@ var treeData = [
 ];
 var Layout = require('./Layout.jsx');
 var Tree = require('./Tree.jsx');
+var Slider = require('./Slider.jsx');
 var MARGINS = {
   top: 20, right: 20,
   bottom: 20, left: 20
@@ -46,9 +47,12 @@ var Main = React.createClass({
     var {width, height} = Layout.computeSize(SIZES, MARGINS);
 
     return (
-      <Layout margins={MARGINS} sizes={SIZES}>
-        <Tree tree={treeData} width={width} height={height} margins={MARGINS} />
-      </Layout>
+      <main>
+        <Layout margins={MARGINS} sizes={SIZES}>
+          <Tree tree={treeData} width={width} height={height} margins={MARGINS} />
+        </Layout>
+        <Slider min={1} max={4} step={1} />
+      </main>
     );
   }
 });

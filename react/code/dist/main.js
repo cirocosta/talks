@@ -227,6 +227,7 @@
 	];
 	var Layout = __webpack_require__(/*! ./Layout.jsx */ 3);
 	var Tree = __webpack_require__(/*! ./Tree.jsx */ 7);
+	var Slider = __webpack_require__(/*! ./Slider.jsx */ 162);
 	var MARGINS = {
 	  top: 20, right: 20,
 	  bottom: 20, left: 20
@@ -241,8 +242,11 @@
 	    var $__0=   Layout.computeSize(SIZES, MARGINS),width=$__0.width,height=$__0.height;
 	
 	    return (
-	      Layout({margins: MARGINS, sizes: SIZES}, 
-	        Tree({tree: treeData, width: width, height: height, margins: MARGINS})
+	      React.DOM.main(null, 
+	        Layout({margins: MARGINS, sizes: SIZES}, 
+	          Tree({tree: treeData, width: width, height: height, margins: MARGINS})
+	        ), 
+	        Slider({min: 1, max: 4, step: 1})
 	      )
 	    );
 	  }
@@ -29332,7 +29336,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  cx: __webpack_require__(/*! ./cx */ 157)
+	  cx: __webpack_require__(/*! ./cx */ 157),
+	  bfs: __webpack_require__(/*! ./bfs */ 160),
 	};
 
 
@@ -29355,6 +29360,212 @@
 	};
 	
 
+
+/***/ },
+/* 158 */,
+/* 159 */,
+/* 160 */
+/*!*************************!*\
+  !*** ./src/util/bfs.js ***!
+  \*************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var assign = __webpack_require__(/*! object-assign */ 161);
+	
+	function Queue () {
+	  this.arr = [];
+	}
+	
+	assign(Queue.prototype, {
+	  enqueue: function (d) {return this.arr.push(d) },
+	  dequeue: function () {return this.arr.pop() },
+	  isEmpty: function () {return !this.arr.length }
+	});
+	
+	function bfs (tree, id) {
+	  var Q = new Queue();
+	  var t;
+	
+	  Q.enqueue(tree);
+	
+	  while (!Q.isEmpty()) {
+	    t = Q.dequeue();
+	
+	    if (t.id === id)
+	      return t;
+	
+	    for (var child in t.children)
+	      Q.enqueue(t.children[child]);
+	  }
+	}
+	
+	module.exports = bfs;
+
+
+/***/ },
+/* 161 */
+/*!**********************************!*\
+  !*** ./~/object-assign/index.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	function ToObject(val) {
+		if (val == null) {
+			throw new TypeError('Object.assign cannot be called with null or undefined');
+		}
+	
+		return Object(val);
+	}
+	
+	module.exports = Object.assign || function (target, source) {
+		var pendingException;
+		var from;
+		var keys;
+		var to = ToObject(target);
+	
+		for (var s = 1; s < arguments.length; s++) {
+			from = arguments[s];
+			keys = Object.keys(Object(from));
+	
+			for (var i = 0; i < keys.length; i++) {
+				try {
+					to[keys[i]] = from[keys[i]];
+				} catch (err) {
+					if (pendingException === undefined) {
+						pendingException = err;
+					}
+				}
+			}
+		}
+	
+		if (pendingException) {
+			throw pendingException;
+		}
+	
+		return to;
+	};
+
+
+/***/ },
+/* 162 */
+/*!***********************************!*\
+  !*** ./src/components/Slider.jsx ***!
+  \***********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * @jsx React.DOM
+	 */
+	
+	__webpack_require__(/*! ./Slider.scss */ 163);
+	var React = __webpack_require__(/*! react */ 2);
+	
+	var Slider = React.createClass({displayName: 'Slider',
+	  propTypes: {
+	    min: React.PropTypes.number.isRequired,
+	    max: React.PropTypes.number.isRequired,
+	    step: React.PropTypes.number.isRequired,
+	
+	    initial: React.PropTypes.number,
+	    onChange: React.PropTypes.func
+	  },
+	
+	  getInitialState:function () {
+	    return {
+	      value: this.props.initial || this.props.min
+	    };
+	  },
+	
+	  handlePrev:function () {
+	    this.setState({
+	      value: this.state.value - this.props.step
+	    });
+	  },
+	
+	  handleNext:function () {
+	    this.setState({
+	      value: this.state.value + this.props.step
+	    });
+	  },
+	
+	  handleChange:function (e) {
+	    this.setState({
+	      value: e.target.value
+	    });
+	  },
+	
+	  componentWillUpdate:function (_, nextState) {
+	    this.props.onChange && this.props.onChange(nextState);
+	  },
+	
+	  hasNext:function () {
+	    return this.state.value + this.props.step <= this.props.max;
+	  },
+	
+	  hasPrev:function () {
+	    return this.state.value - this.props.step >= this.props.min;
+	  },
+	
+	  render:function () {
+	    return (
+	      React.DOM.div({className: 'Slider'}, 
+	        React.DOM.button({onClick: this.handlePrev, disabled: !this.hasPrev()}, 
+	          "prev"
+	        ), 
+	        React.DOM.input({type: "range", 
+	               onChange: this.handleChange, 
+	               min: this.props.min, 
+	               max: this.props.max, 
+	               step: this.props.step, 
+	               value: this.state.value}), 
+	        React.DOM.button({onClick: this.handleNext, disabled: !this.hasNext()}, 
+	          "next"
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Slider;
+
+
+/***/ },
+/* 163 */
+/*!************************************!*\
+  !*** ./src/components/Slider.scss ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./~/css-loader!./~/sass-loader?includePaths[]=/home/ciro/Development/Javascript/talks/talks/react/code/src/style!./src/components/Slider.scss */ 164);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./~/style-loader/addStyles.js */ 31)(content);
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		module.hot.accept("!!/home/ciro/Development/Javascript/talks/talks/react/code/node_modules/css-loader/index.js!/home/ciro/Development/Javascript/talks/talks/react/code/node_modules/sass-loader/index.js?includePaths[]=/home/ciro/Development/Javascript/talks/talks/react/code/src/style!/home/ciro/Development/Javascript/talks/talks/react/code/src/components/Slider.scss", function() {
+			var newContent = require("!!/home/ciro/Development/Javascript/talks/talks/react/code/node_modules/css-loader/index.js!/home/ciro/Development/Javascript/talks/talks/react/code/node_modules/sass-loader/index.js?includePaths[]=/home/ciro/Development/Javascript/talks/talks/react/code/src/style!/home/ciro/Development/Javascript/talks/talks/react/code/src/components/Slider.scss");
+			if(typeof newContent === 'string') newContent = [module.id, newContent, ''];
+			update(newContent);
+		});
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 164 */
+/*!*****************************************************************************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader?includePaths[]=/home/ciro/Development/Javascript/talks/talks/react/code/src/style!./src/components/Slider.scss ***!
+  \*****************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./~/css-loader/cssToString.js */ 94)();
+	exports.push([module.id, ".Slider input{-webkit-appearance:none;border:none;width:80%;margin:0;cursor:move}.Slider input::-webkit-slider-runnable-track{width:80%;height:5px;background:#ddd;border:none;border-radius:3px}.Slider input::-webkit-slider-thumb{-webkit-appearance:none;border:none;height:16px;width:16px;border-radius:50%;background:goldenrod;margin-top:-4px}.Slider input:focus{outline:none}.Slider input:focus::-webkit-slider-runnable-track{background:#ccc}.Slider input::-moz-range-track{width:80%;height:5px;background:#ddd;border:none;border-radius:3px}.Slider input::-moz-range-thumb{border:none;height:16px;width:16px;border-radius:50%;background:goldenrod}.Slider input:-moz-focusring{outline:1px solid white;outline-offset:-1px}.Slider input::-ms-track{width:80%;height:5px;background:transparent;border-color:transparent;border-width:6px 0;color:transparent}.Slider input::-ms-fill-lower{background:#777;border-radius:10px}.Slider input::-ms-fill-upper{background:#ddd;border-radius:10px}.Slider input::-ms-thumb{border:none;height:16px;width:16px;border-radius:50%;background:goldenrod}.Slider input:focus::-ms-fill-lower{background:#888}.Slider input:focus::-ms-fill-upper{background:#ccc}.Slider button{cursor:pointer;width:10%;border:none;font-size:18px;background:yellow}", ""]);
 
 /***/ }
 /******/ ])

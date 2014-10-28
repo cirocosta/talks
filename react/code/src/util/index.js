@@ -1,3 +1,4 @@
 module.exports = {
-  cx: require('./cx')
+  cx: require('./cx'),
+  bfs: require('./bfs'),
 };
