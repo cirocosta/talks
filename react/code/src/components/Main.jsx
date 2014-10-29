@@ -5,31 +5,33 @@
 var React = require('react');
 var treeData = [
   {
-    "name": "Top Level",
-    "id": "l1",
+    "name": "A",
+    "id": "A",
     "children": [
       {
-        "name": "Level 2: A",
-        "id": "l2-a",
-        "active": true,
+        "name": "B",
+        "id": "B",
         "children": [
           {
-            "name": "Son of A",
-            "id": "l3-l2-a-a"
+            "name": "C",
+            "id": "C"
           },
           {
-            "name": "Daughter of A",
-            "id": "l3-l2-a-b"
+            "name": "D",
+            "id": "D"
           }
         ]
       },
       {
-        "name": "Level 2: B",
-        "id": "l2-b"
+        "name": "E",
+        "id": "E"
       }
     ]
   }
 ];
+
+var CALLS = [null, 'A', 'B', 'D'];
+var {bfs, Memoizer} = require('../util');
 var Layout = require('./Layout.jsx');
 var Tree = require('./Tree.jsx');
 var Slider = require('./Slider.jsx');
@@ -42,16 +44,35 @@ var SIZES = {
   height: 500 - MARGINS.top - MARGINS.bottom
 };
 
+bfs = Memoizer(bfs).init();
+
 var Main = React.createClass({
+  getInitialState () {
+    return {
+      tree: treeData
+    };
+  },
+
+  handleSliderChange (state) {
+    if (CALLS[state]) {
+      var a = bfs(treeData[0], CALLS[state]);
+      a.active = true;
+
+      this.setState({
+        tree: treeData
+      });
+    }
+  },
+
   render () {
     var {width, height} = Layout.computeSize(SIZES, MARGINS);
 
     return (
       <main>
         <Layout margins={MARGINS} sizes={SIZES}>
-          <Tree tree={treeData} width={width} height={height} margins={MARGINS} />
+          <Tree tree={this.state.tree} width={width} height={height} margins={MARGINS} />
         </Layout>
-        <Slider min={1} max={4} step={1} />
+        <Slider min={0} max={CALLS.length - 1} step={1} onChange={this.handleSliderChange}/>
       </main>
     );
   }

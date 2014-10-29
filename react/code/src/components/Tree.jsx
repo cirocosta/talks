@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 
-// require('./Tree.scss');
+require('./Tree.scss');
 var React = require('react');
 var d3 = require('d3');
 var Node = require('./Node.jsx');

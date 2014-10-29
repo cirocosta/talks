@@ -200,31 +200,33 @@
 	var React = __webpack_require__(/*! react */ 2);
 	var treeData = [
 	  {
-	    "name": "Top Level",
-	    "id": "l1",
+	    "name": "A",
+	    "id": "A",
 	    "children": [
 	      {
-	        "name": "Level 2: A",
-	        "id": "l2-a",
-	        "active": true,
+	        "name": "B",
+	        "id": "B",
 	        "children": [
 	          {
-	            "name": "Son of A",
-	            "id": "l3-l2-a-a"
+	            "name": "C",
+	            "id": "C"
 	          },
 	          {
-	            "name": "Daughter of A",
-	            "id": "l3-l2-a-b"
+	            "name": "D",
+	            "id": "D"
 	          }
 	        ]
 	      },
 	      {
-	        "name": "Level 2: B",
-	        "id": "l2-b"
+	        "name": "E",
+	        "id": "E"
 	      }
 	    ]
 	  }
 	];
+	
+	var CALLS = [null, 'A', 'B', 'D'];
+	var $__0=   __webpack_require__(/*! ../util */ 156),bfs=$__0.bfs,Memoizer=$__0.Memoizer;
 	var Layout = __webpack_require__(/*! ./Layout.jsx */ 3);
 	var Tree = __webpack_require__(/*! ./Tree.jsx */ 7);
 	var Slider = __webpack_require__(/*! ./Slider.jsx */ 162);
@@ -237,16 +239,35 @@
 	  height: 500 - MARGINS.top - MARGINS.bottom
 	};
 	
+	bfs = Memoizer(bfs).init();
+	
 	var Main = React.createClass({displayName: 'Main',
+	  getInitialState:function () {
+	    return {
+	      tree: treeData
+	    };
+	  },
+	
+	  handleSliderChange:function (state) {
+	    if (CALLS[state]) {
+	      var a = bfs(treeData[0], CALLS[state]);
+	      a.active = true;
+	
+	      this.setState({
+	        tree: treeData
+	      });
+	    }
+	  },
+	
 	  render:function () {
 	    var $__0=   Layout.computeSize(SIZES, MARGINS),width=$__0.width,height=$__0.height;
 	
 	    return (
 	      React.DOM.main(null, 
 	        Layout({margins: MARGINS, sizes: SIZES}, 
-	          Tree({tree: treeData, width: width, height: height, margins: MARGINS})
+	          Tree({tree: this.state.tree, width: width, height: height, margins: MARGINS})
 	        ), 
-	        Slider({min: 1, max: 4, step: 1})
+	        Slider({min: 0, max: CALLS.length - 1, step: 1, onChange: this.handleSliderChange})
 	      )
 	    );
 	  }
@@ -425,7 +446,7 @@
 
 	/** @jsx React.DOM */
 	
-	// require('./Tree.scss');
+	__webpack_require__(/*! ./Tree.scss */ 158);
 	var React = __webpack_require__(/*! react */ 2);
 	var d3 = __webpack_require__(/*! d3 */ 33);
 	var Node = __webpack_require__(/*! ./Node.jsx */ 4);
@@ -29338,6 +29359,8 @@
 	module.exports = {
 	  cx: __webpack_require__(/*! ./cx */ 157),
 	  bfs: __webpack_require__(/*! ./bfs */ 160),
+	  Memoizer: __webpack_require__(/*! ./Memoizer */ 165),
+	  stringify: __webpack_require__(/*! ./stringify */ 182),
 	};
 
 
@@ -29362,16 +29385,55 @@
 
 
 /***/ },
-/* 158 */,
-/* 159 */,
+/* 158 */
+/*!**********************************!*\
+  !*** ./src/components/Tree.scss ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./~/css-loader!./~/sass-loader?includePaths[]=/home/ciro/Development/Javascript/talks/talks/react/code/src/style!./src/components/Tree.scss */ 159);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./~/style-loader/addStyles.js */ 31)(content);
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		module.hot.accept("!!/home/ciro/Development/Javascript/talks/talks/react/code/node_modules/css-loader/index.js!/home/ciro/Development/Javascript/talks/talks/react/code/node_modules/sass-loader/index.js?includePaths[]=/home/ciro/Development/Javascript/talks/talks/react/code/src/style!/home/ciro/Development/Javascript/talks/talks/react/code/src/components/Tree.scss", function() {
+			var newContent = require("!!/home/ciro/Development/Javascript/talks/talks/react/code/node_modules/css-loader/index.js!/home/ciro/Development/Javascript/talks/talks/react/code/node_modules/sass-loader/index.js?includePaths[]=/home/ciro/Development/Javascript/talks/talks/react/code/src/style!/home/ciro/Development/Javascript/talks/talks/react/code/src/components/Tree.scss");
+			if(typeof newContent === 'string') newContent = [module.id, newContent, ''];
+			update(newContent);
+		});
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 159 */
+/*!***************************************************************************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader?includePaths[]=/home/ciro/Development/Javascript/talks/talks/react/code/src/style!./src/components/Tree.scss ***!
+  \***************************************************************************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./~/css-loader/cssToString.js */ 94)();
+	exports.push([module.id, ".Link{fill:none;stroke:#ccc;stroke-width:2px}", ""]);
+
+/***/ },
 /* 160 */
 /*!*************************!*\
   !*** ./src/util/bfs.js ***!
   \*************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var assign = __webpack_require__(/*! object-assign */ 161);
+	var assign = Object.assign || __webpack_require__(/*! object-assign */ 161);
 	
+	/**
+	 * Super simple queue implementation. This is
+	 * not a big deal but it makes more clear that
+	 * BFS is queue-based.
+	 */
 	function Queue () {
 	  this.arr = [];
 	}
@@ -29382,6 +29444,11 @@
 	  isEmpty: function () {return !this.arr.length }
 	});
 	
+	/**
+	 * Searches for an ID in a well formed tree
+	 * (using the "id/children" structure) and then
+	 * returns the object found.
+	 */
 	function bfs (tree, id) {
 	  var Q = new Queue();
 	  var t;
@@ -29398,6 +29465,8 @@
 	      Q.enqueue(t.children[child]);
 	  }
 	}
+	
+	// TODO multiple-bfs
 	
 	module.exports = bfs;
 
@@ -29492,12 +29561,12 @@
 	
 	  handleChange:function (e) {
 	    this.setState({
-	      value: e.target.value
+	      value: +e.target.value
 	    });
 	  },
 	
 	  componentWillUpdate:function (_, nextState) {
-	    this.props.onChange && this.props.onChange(nextState);
+	    this.props.onChange && this.props.onChange(nextState.value);
 	  },
 	
 	  hasNext:function () {
@@ -29566,6 +29635,104 @@
 
 	exports = module.exports = __webpack_require__(/*! ./~/css-loader/cssToString.js */ 94)();
 	exports.push([module.id, ".Slider input{-webkit-appearance:none;border:none;width:80%;margin:0;cursor:move}.Slider input::-webkit-slider-runnable-track{width:80%;height:5px;background:#ddd;border:none;border-radius:3px}.Slider input::-webkit-slider-thumb{-webkit-appearance:none;border:none;height:16px;width:16px;border-radius:50%;background:goldenrod;margin-top:-4px}.Slider input:focus{outline:none}.Slider input:focus::-webkit-slider-runnable-track{background:#ccc}.Slider input::-moz-range-track{width:80%;height:5px;background:#ddd;border:none;border-radius:3px}.Slider input::-moz-range-thumb{border:none;height:16px;width:16px;border-radius:50%;background:goldenrod}.Slider input:-moz-focusring{outline:1px solid white;outline-offset:-1px}.Slider input::-ms-track{width:80%;height:5px;background:transparent;border-color:transparent;border-width:6px 0;color:transparent}.Slider input::-ms-fill-lower{background:#777;border-radius:10px}.Slider input::-ms-fill-upper{background:#ddd;border-radius:10px}.Slider input::-ms-thumb{border:none;height:16px;width:16px;border-radius:50%;background:goldenrod}.Slider input:focus::-ms-fill-lower{background:#888}.Slider input:focus::-ms-fill-upper{background:#ccc}.Slider button{cursor:pointer;width:10%;border:none;font-size:18px;background:yellow}", ""]);
+
+/***/ },
+/* 165 */
+/*!******************************!*\
+  !*** ./src/util/Memoizer.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var assign = Object.assign || __webpack_require__(/*! object-assign */ 161);
+	var stringify = __webpack_require__(/*! ./stringify */ 182);
+	
+	/**
+	 * Provides memoization for a given function.
+	 *
+	 * It is important to notice that it is not
+	 * everytime that memoization will be
+	 * interesting. In some situations executing the
+	 * fuction per se is less costing than using
+	 * memoize method.
+	 */
+	function Memoizer (f) {
+	  if (!(this instanceof Memoizer))
+	    return new Memoizer(f);
+	
+	  if (!f) throw new Error('Memoizer expects a function');
+	
+	  this._cache = {};
+	  this.f = f;
+	}
+	
+	assign(Memoizer.prototype, {
+	  /**
+	   * Prepares the function for memoization.
+	   */
+	  _memoize:function () {var args=Array.prototype.slice.call(arguments,0);
+	    var param = stringify(args);
+	
+	    return (param in this._cache) ?
+	      this._cache[param] :
+	      this._cache[param] = this.f.apply(null, args);
+	  },
+	
+	  /**
+	   * Releases the internal cache
+	   */
+	  release: function()  {
+	    _cache = {};
+	  },
+	
+	  /**
+	   * Initializer
+	   */
+	  init:function () {
+	    return function() 
+	      {return this._memoize.apply(this, [].slice.call(arguments));}.bind(this);
+	  }
+	});
+	
+	module.exports = Memoizer;
+
+
+/***/ },
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */
+/*!*******************************!*\
+  !*** ./src/util/stringify.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(obj)  {
+	  var seen = [];
+	
+	  return JSON.stringify(obj, function(key, val)  {
+	    if (val != null && typeof val == "object") {
+	      if (seen.indexOf(val) >= 0)
+	        return;
+	
+	      seen.push(val);
+	    }
+	    return val;
+	  });
+	};
+
 
 /***/ }
 /******/ ])

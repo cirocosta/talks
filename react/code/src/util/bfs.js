@@ -1,5 +1,10 @@
-var assign = require('object-assign');
+var assign = Object.assign || require('object-assign');
 
+/**
+ * Super simple queue implementation. This is
+ * not a big deal but it makes more clear that
+ * BFS is queue-based.
+ */
 function Queue () {
   this.arr = [];
 }
@@ -10,6 +15,11 @@ assign(Queue.prototype, {
   isEmpty: function () {return !this.arr.length }
 });
 
+/**
+ * Searches for an ID in a well formed tree
+ * (using the "id/children" structure) and then
+ * returns the object found.
+ */
 function bfs (tree, id) {
   var Q = new Queue();
   var t;
@@ -26,5 +36,7 @@ function bfs (tree, id) {
       Q.enqueue(t.children[child]);
   }
 }
+
+// TODO multiple-bfs
 
 module.exports = bfs;

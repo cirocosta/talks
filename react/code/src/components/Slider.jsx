@@ -35,12 +35,12 @@ var Slider = React.createClass({
 
   handleChange (e) {
     this.setState({
-      value: e.target.value
+      value: +e.target.value
     });
   },
 
   componentWillUpdate (_, nextState) {
-    this.props.onChange && this.props.onChange(nextState);
+    this.props.onChange && this.props.onChange(nextState.value);
   },
 
   hasNext () {
